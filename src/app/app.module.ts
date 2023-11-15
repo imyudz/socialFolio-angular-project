@@ -5,12 +5,14 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HeaderComponent } from './components/header/header.component';
 import { PostSectionComponent } from './pages/post-section/post-section.component';
 import { AppRoutingModule } from './app-routing.module';
+import { CurriculoSectionComponent } from './pages/curriculo-section/curriculo-section.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    PostSectionComponent
+    PostSectionComponent,
+    CurriculoSectionComponent
   ],
   imports: [
     BrowserModule,
