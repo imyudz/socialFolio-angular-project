@@ -6,13 +6,15 @@ import { HeaderComponent } from './components/header/header.component';
 import { PostSectionComponent } from './pages/post-section/post-section.component';
 import { AppRoutingModule } from './app-routing.module';
 import { PerfilSidebarComponent } from './components/perfil-sidebar/perfil-sidebar.component';
+import { PostComponent } from './components/post/post.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     PostSectionComponent,
-    PerfilSidebarComponent
+    PerfilSidebarComponent,
+    PostComponent
   ],
   imports: [
     BrowserModule,
