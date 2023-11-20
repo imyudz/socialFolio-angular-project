@@ -1,9 +1,11 @@
-<header class="fixed top-0 flex items-center justify-end min-w-full px-32 bg-primary-500">
-  <div class="mr-auto text-xl font-bold text-white">
+
+<header class="bg-primary-500 px-32 flex items-center justify-end fixed min-w-full top-0 shadow">
+  <div class="mr-auto font-bold text-white text-xl">
     SocialFolio
   </div>
-  <nav class="flex justify-center mr-10 text-white ">
-    <ul class="flex justify-center flex-nowrap">
+  <nav class=" flex text-white mr-10 justify-center">
+    <ul class="flex flex-nowrap justify-center gap-3 ">
+
       <li class="flex items-center justify-center">
         <a routerLink="/feed" routerLinkActive="active"  class="flex flex-col items-center justify-center text-xl font-normal leading-5 text-center hover:text-white" style="min-height: 59px; min-width: 84px;">
           <fa-icon class="" [icon]="faGlobe"></fa-icon>
@@ -11,7 +13,9 @@
         </a>
       </li>
       <li>
-        <a   class="flex flex-col items-center justify-center text-xl font-normal leading-5 text-center text-white " style="min-height: 59px; min-width: 84px;">
+
+        <a routerLink="/curriculo" routerLinkActive="active" class=" flex flex-col justify-center text-center items-center text-xl text-white font-normal leading-5" style="min-height: 59px; min-width: 84px;">
+
           <fa-icon class="" [icon]="faFileLines"></fa-icon>
           <span class="text-smaller">Currículo</span>
         </a>

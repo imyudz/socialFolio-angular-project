@@ -1,11 +1,12 @@
-<div class="wrapper pt-20 max-w-6xl mb-12 bg-red-800 mx-auto grid grid-cols-12 gap-6 items-start ">
-  <aside class="bg-slate-700 col-span-3">
-    aside
-  </aside>
-  <article class="bg-slate-900 col-span-7">
-    article
-  </article>
-  <aside class="bg-cyan-800 col-span-2">
+<div class="grid items-start max-w-6xl grid-cols-12 gap-6 pt-20 mx-auto mb-12 px-4">
+  <app-perfil-sidebar class="col-span-3"></app-perfil-sidebar>
+  <main class="col-span-6 flex flex-col gap-4">
+    <app-post></app-post>
+    <app-post></app-post>
+    <app-post></app-post>
+    <app-post></app-post>
+  </main>
+  <aside class="col-span-3 bg-cyan-800">
     aside2
   </aside>
 </div>
