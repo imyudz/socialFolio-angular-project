@@ -15,7 +15,7 @@ import { PerfilSidebarComponent } from './components/perfil-sidebar/perfil-sideb
     AppComponent,
     HeaderComponent,
     PostSectionComponent,
-    PostComponent
+    PostComponent,
     CurriculoSectionComponent,
     PerfilSidebarComponent
   ],
