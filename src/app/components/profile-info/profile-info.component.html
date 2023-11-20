@@ -1,32 +1,32 @@
-<article style="box-shadow: 03px 3px 5px 2px rgba(0, 0, 0, 0.2); width:110%" class="box-border p-5 rounded-lg colspan-3 bg-gray-300">
+<article style="box-shadow: 03px 3px 5px 2px rgba(0, 0, 0, 0.2); " class="box-border p-5 rounded-lg colspan-3 bg-gray-300">
     <div class="grid grid-cols-3 gap-4 p-5" id="formulario">
         <div class="">
             <label for="nome">Nome:</label><br>
-            <input id="nome" class=" p-1"  style="width: 226px;" placeholder="Nome" [(ngModel)]="nameUser"/>
+            <input id="nome" class=" p-1 w-56 col-span-1"  placeholder="Nome" [(ngModel)]="nameUser"/>
         </div>
         <div >
             <label for="sobrenome">Sobrenome:</label><br>
-            <input style="width: 226px;" class=" p-1" id="nome"placeholder="Sobrenome" [(ngModel)]="sobrenomeUser"/>
+            <input class=" p-1 w-56" id="nome"placeholder="Sobrenome" [(ngModel)]="sobrenomeUser"/>
         </div>
         <div class="">
             <label for="dtNasc">Data de Nascimento:</label><br>
-            <input  style="width: 226px;" class=" p-1" id="dtNasc" type="date" [(ngModel)]="dtNascUser"/>
+            <input  class="w-56 p-1" id="dtNasc" type="date" [(ngModel)]="dtNascUser"/>
         </div>
         <div class="">
             <label for="email">E-mail:</label><br>
-            <input  style="width: 226px;" class=" p-1" id="email" type="text" placeholder="your.email@domain.com" [(ngModel)]="emailUser"/>
+            <input  class="w-56 p-1" id="email" type="text" placeholder="your.email@domain.com" [(ngModel)]="emailUser"/>
         </div>
         <div class="">
             <label for="phone">Telefone:</label><br>
-            <input  style="width: 226px;" class=" p-1" id="phone" type="text" placeholder="(xx) xxxxx-xxxx" [(ngModel)]="phoneNumber"/>
+            <input  class="w-56 p-1" id="phone" type="text" placeholder="(xx) xxxxx-xxxx" [(ngModel)]="phoneNumber"/>
         </div>
         <div class="">
             <label for="profissao">Profissão:</label><br>
-            <input   style="width: 226px;" class=" p-1" id="profissao" type="text" placeholder="Profissão" [(ngModel)]="profissao"/>
+            <input   class="w-56 p-1" id="profissao" type="text" placeholder="Profissão" [(ngModel)]="profissao"/>
         </div>
         <div class="">
             <label for="experiencia">Experiencia:</label><br>
-            <select  style="width: 226px;" class=" p-1" id="experiencia" type="text" placeholder="Nome" [(ngModel)]="trampoSelecionado" (change)="onChange()">
+            <select  class="w-56 p-1" id="experiencia" type="text" placeholder="Nome" [(ngModel)]="trampoSelecionado" (change)="onChange()">
                 <option *ngFor="let t of niveis" [value]="t">
                     {{ t }}
                 </option>
@@ -34,7 +34,7 @@
         </div>
         <div class="">
             <label for="desc">Descricão:</label><br>
-            <textarea  style="width: 485px; height: 100px" class=" p-1" id="desc" placeholder="Descrição do usuario" [(ngModel)]="descricao"></textarea>
+            <textarea  class=" w-96 h-24 p-1" id="desc" placeholder="Descrição do usuario" [(ngModel)]="descricao"></textarea>
         </div>        
     </div>
     
