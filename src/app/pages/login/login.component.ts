@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -8,16 +9,19 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LoginComponent {
 
-  constructor(public authService: AuthService) { }
+  constructor(private authService: AuthService, private formBuilder: FormBuilder) { }
 
-  private username: string = "teste@123.com";
-  private password: string = "teste";
+  loginForm = this.formBuilder.group({
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required]]
+  })
 
-
-
-  ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
-    this.authService.login(this.username, this.password);
+  public get email(): FormControl<String | null> {
+    return this.loginForm.controls.email;
   }
+
+  public get password(): FormControl<String | null> {
+    return this.loginForm.controls.password;
+  }
+
 }
