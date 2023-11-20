@@ -8,6 +8,7 @@ const routes: Routes = [
   { path: "feed", component: PostSectionComponent },
   { path: "curriculo", component: CurriculoSectionComponent },
   { path: "profile", component: PerfilSectionComponent }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
