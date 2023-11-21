@@ -27,60 +27,70 @@
           <div class="lg:col-span-2">
             <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-6">
               <div class="md:col-span-3">
-                <label for="full_name">Nome</label>
+                <label for="nome">Nome <span class="text-red-500 font-bold text-base leading-none">*</span></label>
                 <input
                   type="text"
-                  name="full_name"
-                  id="full_name"
+                  name="nome"
+                  id="nome"
                   class="h-10 mt-1 border-0 w-full rounded-md py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6 transition duration-200"
                   value=""
                 />
               </div>
 
               <div class="md:col-span-3">
-                <label for="full_name">Sobrenome</label>
+                <label for="sobrenome">Sobrenome <span class="text-red-500 font-bold text-base leading-none">*</span></label>
                 <input
                   type="text"
-                  name="full_name"
-                  id="full_name"
+                  name="sobrenome"
+                  id="sobrenome"
                   class="h-10 mt-1 border-0 w-full rounded-md py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6 transition duration-200"
                   value=""
                 />
               </div>
 
-              <div class="md:col-span-6">
-                <label for="email">Email Address</label>
+              <div class="md:col-span-3">
+                <label for="nome_social">Nome Social</label>
                 <input
                   type="text"
+                  name="nome_social"
+                  id="nome_social"
+                  class="h-10 mt-1 border-0 w-full rounded-md py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6 transition duration-200"
+                  value=""
+                />
+              </div>
+
+              <div class="md:col-span-3">
+                <label for="email">Email <span class="text-red-500 font-bold text-base leading-none">*</span></label>
+                <input
+                  type="email"
                   name="email"
                   id="email"
-                  class="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
+                  class="h-10 mt-1 border-0 w-full rounded-md py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6 transition duration-200"
                   value=""
-                  placeholder="email@domain.com"
+                  placeholder="email@dominio.com"
                 />
               </div>
 
               <div class="md:col-span-3">
-                <label for="address">Address / Street</label>
+                <label for="dt_nasc">Data de Nascimento <span class="text-red-500 font-bold text-base leading-none">*</span></label>
                 <input
-                  type="text"
-                  name="address"
-                  id="address"
-                  class="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
+                  type="date"
+                  name="dt_nasc"
+                  id="dt_nasc"
+                  class="h-10 mt-1 border-0 w-full rounded-md py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6 transition duration-200"
                   value=""
-                  placeholder=""
                 />
               </div>
 
-              <div class="md:col-span-2">
-                <label for="city">City</label>
+              <div class="md:col-span-3">
+                <label for="dt_nasc">Telefone <span class="text-red-500 font-bold text-base leading-none">*</span></label>
                 <input
                   type="text"
-                  name="city"
-                  id="city"
-                  class="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
+                  name="dt_nasc"
+                  id="dt_nasc"
+                  class="h-10 mt-1 border-0 w-full rounded-md py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6 transition duration-200"
                   value=""
-                  placeholder=""
+                  placeholder="(00) 00000-0000"
                 />
               </div>
 
