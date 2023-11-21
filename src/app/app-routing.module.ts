@@ -7,12 +7,11 @@ import { authGuardFn } from './services/auth.guard';
 import { LoginComponent } from './pages/login/login.component';
 
 const routes: Routes = [
-  { path: "**", redirectTo: ""},
-  { path: "", redirectTo: "/feed", pathMatch: "full" },
-  { path: "feed", component: PostSectionComponent, canActivate: [authGuardFn] },
-  { path: "curriculo", component: CurriculoSectionComponent, canActivate: [authGuardFn] },
-  { path: "profile", component: PerfilSectionComponent, canActivate: [authGuardFn] },
-  { path: "login", component: LoginComponent}
+  { path: "", redirectTo: "/feed", pathMatch: 'full'},
+  { path: "feed", component: PostSectionComponent, canActivate: [authGuardFn], data: {layout: "default-layout"} },
+  { path: "curriculo", component: CurriculoSectionComponent, canActivate: [authGuardFn], data: {layout: "default-layout"} },
+  { path: "profile", component: PerfilSectionComponent, canActivate: [authGuardFn], data: {layout: "default-layout"} },
+  { path: "login", component: LoginComponent, data: {layout: "login-layout"}}
 ];
 
 @NgModule({

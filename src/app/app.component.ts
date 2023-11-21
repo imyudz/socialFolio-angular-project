@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,4 +8,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'socialFolio-angular-project';
+  layout: string = "default-layout";
+
+  constructor(private router: Router) {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        const currentRoute = this.router.routerState.snapshot.root.firstChild?.routeConfig?.data?.["layout"];
+        this.layout = currentRoute || 'default-layout';
+      }
+    })
+  }
 }
