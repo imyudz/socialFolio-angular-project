@@ -1,0 +1,15 @@
+<aside  style="box-shadow: 03px 3px 5px 2px rgba(0, 0, 0, 0.2); width: 70%" class="box-border col-span-3 ml-6 text-center bg-gray-300 rounded-lg ">
+  <img src="https://images.unsplash.com/photo-1682695795931-a546abdb6733?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="h-[75px] w-full object-cover rounded-t-lg">
+    <div class="profile flex flex-col items-center justify-center ">
+      <img class="img-perfil w-24 h-24 object-cover mb-2 rounded-full border-2 box-content border-primary-500 -mt-7"
+      src="{{imgProfileTemp}}">
+      <br>
+    
+      <label class="text-white custom-file-upload bg-orange-300 p-2 rounded cursor-pointer mb-3 hover:bg-orange-400 shadow-sm shadow-gray-500">
+        <input type="file" (change)="onFileSelected($event)" class="hidden">
+        Escolher Imagem
+      </label>
+      
+      <!-- <input style="width: 158px;" type="file" value="Alterar imagem"  class=" p-1 mt-4 mb-4 rounded shadow shadow-slate-400 bg-orange-300 text-white" [(ngModel)]="imgProfile" (change)="onFileSelected($event)"> -->
+    </div>
+  </aside>
