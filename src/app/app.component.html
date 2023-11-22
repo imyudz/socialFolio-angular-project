@@ -1,7 +1,12 @@
-
-<app-header></app-header>
-<main>
-  <router-outlet></router-outlet>
-</main>
-
+<ng-container [ngSwitch]="layout">
+  <ng-container *ngSwitchCase="'login-layout'">
+        <router-outlet></router-outlet>
+  </ng-container>
+  <ng-container *ngSwitchCase="'default-layout'">
+    <app-header></app-header>
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+  </ng-container>
+</ng-container>
 
