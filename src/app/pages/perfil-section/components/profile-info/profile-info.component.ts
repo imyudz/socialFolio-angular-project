@@ -6,16 +6,12 @@ import { Component, NgModule, OnInit } from '@angular/core';
   styleUrls: ['./profile-info.component.css']
 })
 export class ProfileInfoComponent implements OnInit {
-
-
-  ngOnInit(): void {
-    this.nameUser = 'Dev'
-    this.trampoSelecionado = 'Selecione'
-  }
   dtNascUser: string =  '2021-12-02'
-  
+  nomeSocial: any ='';
+  cidadeUser: any ='';
+  estadoUser: any = '';
   sobrenomeUser: any = '';
-  nameUser: any = '';
+  nameUser: any = 'Dev';
   emailUser: any = ''
   phoneNumber: any ='';
   profissao: any = '';
@@ -26,6 +22,12 @@ export class ProfileInfoComponent implements OnInit {
   niveis = [
     'Selecione', 'Estagiario/trainne', 'Junior','Pleno','Senior'
   ]
+
+  ngOnInit(): void {
+    this.nameUser = 'Dev'
+    this.trampoSelecionado = 'Selecione'
+  }
+  
   onChange(){
     this.trampoSelecionado = this.niveis.filter((x) => x == this.trampoSelecionado)[0];
     console.log(this.trampoSelecionado)
