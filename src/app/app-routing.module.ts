@@ -8,9 +8,13 @@ import { LoginComponent } from './pages/login/login.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "/feed", pathMatch: 'full'},
-  { path: "feed", component: PostSectionComponent, canActivate: [authGuardFn], data: {layout: "default-layout"} },
-  { path: "curriculo", component: CurriculoSectionComponent, canActivate: [authGuardFn], data: {layout: "default-layout"} },
-  { path: "profile", component: PerfilSectionComponent, canActivate: [authGuardFn], data: {layout: "default-layout"} },
+  // { path: "feed", component: PostSectionComponent, canActivate: [authGuardFn], data: {layout: "default-layout"} },
+  { path: "feed", component: PostSectionComponent, data: {layout: "default-layout"} },
+  //{ path: "curriculo", component: CurriculoSectionComponent, canActivate: [authGuardFn], data: {layout: "default-layout"} },
+  { path: "curriculo", component: CurriculoSectionComponent, data: {layout: "default-layout"} },
+  // { path: "profile", component: PerfilSectionComponent, canActivate: [authGuardFn], data: {layout: "default-layout"} },
+  { path: "profile", component: PerfilSectionComponent,  data: {layout: "default-layout"}},
+
   { path: "login", component: LoginComponent, data: {layout: "login-layout"}}
 ];
 
