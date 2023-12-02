@@ -14,6 +14,7 @@ import { AuthService } from './services/auth.service';
 import { RegistroModule } from './pages/registro/registro.module';
 
 
+
 @NgModule({
   declarations: [
     AppComponent

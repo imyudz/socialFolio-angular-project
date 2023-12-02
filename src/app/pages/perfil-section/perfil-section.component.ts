@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./perfil-section.component.css']
 })
 export class PerfilSectionComponent {
-
+  corpoHtml: boolean = true
 }
