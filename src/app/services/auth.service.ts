@@ -3,6 +3,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { AuthenticationResponse } from './models/AuthenticationResponse';
+import { LoginRequest } from './models/LoginRequest';
 
 @Injectable({
   providedIn: 'root'
@@ -15,11 +16,8 @@ export class AuthService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  login(username: string, password: string): Observable<any>{
-    return this.http.post<any>(this.authURL+"/authenticate", {
-      username,
-      password
-    });
+  login(loginBody: LoginRequest): Observable<AuthenticationResponse>{
+    return this.http.post<AuthenticationResponse>(this.authURL+"/authenticate", loginBody);
   };
 
   register(registerBody: FormData): Observable<AuthenticationResponse> {
