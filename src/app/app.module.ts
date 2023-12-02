@@ -11,6 +11,7 @@ import { PerfilSectionModule } from './pages/perfil-section/perfil-section.modul
 import { LoginModule } from './pages/login/login.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
+import { RegistroModule } from './pages/registro/registro.module';
 
 
 
@@ -30,7 +31,8 @@ import { AuthService } from './services/auth.service';
     PerfilSectionModule,
     LoginModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RegistroModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
