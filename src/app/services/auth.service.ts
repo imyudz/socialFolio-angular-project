@@ -1,25 +1,30 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { AuthenticationResponse } from './models/AuthenticationResponse';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private authURL = "http://localhost:8080/api/v1/authenticate"
+  private authURL = "http://localhost:8080/api/v1/auth"
   private loggedIn = new BehaviorSubject<boolean>(false);
   private tokenKey = "token";
 
   constructor(private http: HttpClient, private router: Router) { }
 
   login(username: string, password: string): Observable<any>{
-    return this.http.post<any>(this.authURL, {
+    return this.http.post<any>(this.authURL+"/authenticate", {
       username,
       password
     });
   };
+
+  register(registerBody: FormData): Observable<AuthenticationResponse> {
+    return this.http.post<AuthenticationResponse>(this.authURL+"/register", registerBody);
+  }
 
   setLoggedIn(status: boolean) {
     this.loggedIn.next(status);
