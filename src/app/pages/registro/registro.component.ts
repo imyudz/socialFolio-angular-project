@@ -64,7 +64,6 @@ export class RegistroComponent {
   }
 
 
-
   loadProfileImage(event: Event): void | { notAllowedType: boolean } {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files.length > 0) {
@@ -136,7 +135,7 @@ export class RegistroComponent {
 
   onSubmit() {
     const dadosFormulario = new FormData();
-      dadosFormulario.append("name", this.registerForm.get("nome")?.value);
+      dadosFormulario.append("firstName", this.registerForm.get("nome")?.value);
       dadosFormulario.append("lastName", this.registerForm.get("sobrenome")?.value);
       dadosFormulario.append("socialName", this.registerForm.get("nomeSocial")?.value);
       dadosFormulario.append("email", this.registerForm.get("email")?.value);
