@@ -1,6 +1,7 @@
+import { UserDetailsResponse } from './models/UserDetailsResponse.model';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -10,7 +11,7 @@ export class ApiService {
   constructor(private http: HttpClient, private router: Router) { }
 
   API_SERVICE_URL: string = 'http://localhost:8080/api/v1/demo';
-  public getUserDetails(): Observable<any> {
-    return this.http.get<any>(this.API_SERVICE_URL + '/profile/');
+  public getUserDetails(userId: number): Observable<UserDetailsResponse> {
+    return this.http.get<UserDetailsResponse>(this.API_SERVICE_URL + `/userinfo/${userId}`);
   }
 }

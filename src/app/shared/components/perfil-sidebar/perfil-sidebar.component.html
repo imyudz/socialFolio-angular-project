@@ -1,38 +1,41 @@
-<aside class="bg-white rounded-lg overflow-hidden border-0" style="box-shadow: 0px 0px 0px 1px rgb(140,140,140,0.2)">
-    <img src="https://images.unsplash.com/photo-1682695795931-a546abdb6733?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="h-[75px] w-full object-cover">
+<aside *ngIf="this.dadosPerfil" class="bg-white rounded-lg overflow-hidden border-0" style="box-shadow: 0px 0px 0px 1px rgb(140,140,140,0.2)">
+    <img [src]="imgCover" class="h-[75px] w-full object-cover">
     <div class="profile flex flex-col items-center justify-center mt-[-2.9rem]">
       <img
-        src="{{imgProfileTemp}}"
+        src="{{'data:image/*;base64,' + this.dadosPerfil.avatar}}"
         class="img-perfil w-20 h-20 object-cover mb-2 rounded-full border-2 box-content border-primary-500"
       >
-      <div *ngIf="!htmlDefinitivo">
-        <strong class="block text-primary-500 font-inter text-center font-semibold text-lg">Victor Henri Vargas</strong>
-        <p class="block px-4 mt-2 pb-4 mb-1 text-center leading-5 font-thin font-inter text-smaller text-neutral-600 border-b-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, iste fuga consectetur dicta tempore accusamus facilis assumenda. Eum aliquam quia saepe? Qui debitis, minus tempora animi eum officia totam laborum.</p>
+      <div *ngIf="!htmlDefinitivo" class="flex flex-col items-center justify-center w-full">
+        <strong class="block text-primary-500 font-inter text-center font-semibold text-lg">{{this.dadosPerfil.name}}</strong>
+        <div class="block w-full px-4 mt-2 pb-4 mb-1 border-b-2">
+          <p class="text-center leading-5 font-thin font-inter text-smaller text-neutral-600">{{this.dadosPerfil.description}}</p>
+        </div>
 
         <div class="information flex flex-col gap-2 w-full px-4 py-2">
-          <div class="flex flex-row w-full justify-between items-center">
-          <strong class="text-smaller uppercase font-semibold text-neutral-400 font-inter">PROFISSÃO</strong>
-          <span class="text-smaller font-medium font-inter text-primary-500 leading-none uppercase">Desenvolvedor Web</span>
+          <div *ngIf="this.dadosPerfil.profission !== null" class="flex flex-row w-full justify-between items-center">
+            <strong class="text-smaller uppercase font-semibold text-neutral-400 font-inter">PROFISSÃO</strong>
+            <span class="text-smaller font-medium font-inter text-primary-500 leading-none uppercase">{{this.dadosPerfil.profission}}</span>
           </div>
-          <div class="flex flex-row w-full justify-between items-center">
+          <div *ngIf="this.dadosPerfil.dtNasc !== null" class="flex flex-row w-full justify-between items-center">
             <strong class="text-smaller uppercase font-semibold text-neutral-400 font-inter">IDADE</strong>
-            <span class="text-smaller font-medium font-inter text-primary-500 leading-none uppercase">19</span>
+            <span class="text-smaller font-medium font-inter text-primary-500 leading-none uppercase">{{this.userAge}}</span>
           </div>
-          <div class="flex flex-row w-full justify-between items-center">
+          <div *ngIf="this.dadosPerfil.employee !== null"class="flex flex-row w-full justify-between items-center">
             <strong class="text-smaller uppercase font-semibold text-neutral-400 font-inter">EMPREGADO</strong>
-            <span class="text-smaller font-medium font-inter text-primary-500 leading-none uppercase">SIM</span>
+            <span *ngIf="this.dadosPerfil.employee == true" class="text-smaller font-medium font-inter text-primary-500 leading-none uppercase">SIM</span>
+            <span *ngIf="this.dadosPerfil.employee == false" class="text-smaller font-medium font-inter text-primary-500 leading-none uppercase">NÃO</span>
           </div>
-          <div class="flex flex-row w-full justify-between items-center">
+          <div *ngIf="this.dadosPerfil.city !== null" class="flex flex-row w-full justify-between items-center">
             <strong class="text-smaller uppercase font-semibold text-neutral-400 font-inter">LOCAL</strong>
-            <span class="text-smaller font-medium font-inter text-primary-500 leading-none uppercase">São Paulo</span>
+            <span class="text-smaller font-medium font-inter text-primary-500 leading-none uppercase">{{this.dadosPerfil.city}}</span>
           </div>
-          <div class="flex flex-row w-full justify-between items-center">
+          <div *ngIf="this.dadosPerfil.recent_Education !== null" class="flex flex-row w-full justify-between items-center">
             <strong class="text-smaller uppercase font-semibold text-neutral-400 font-inter">EDUCAÇÃO</strong>
-            <span class="text-smaller font-medium font-inter text-primary-500 leading-none uppercase">Faculdade SENAI</span>
+            <span class="text-smaller font-medium font-inter text-primary-500 leading-none uppercase">{{this.dadosPerfil.recent_Education}}</span>
           </div>
-          <div class="flex flex-row w-full justify-between items-center">
+          <div *ngIf="this.dadosPerfil.workplace !== null" class="flex flex-row w-full justify-between items-center">
             <strong class="text-smaller uppercase font-semibold text-neutral-400 font-inter">EMPRESA</strong>
-            <span class="text-smaller font-medium font-inter text-primary-500 leading-none uppercase">pARANOÁ</span>
+            <span class="text-smaller font-medium font-inter text-primary-500 leading-none uppercase">{{this.dadosPerfil.workplace.toUpperCase()}}</span>
           </div>
         </div>
       </div>
@@ -44,3 +47,51 @@
       </div>
     </div>
 </aside>
+
+<aside *ngIf="!this.dadosPerfil" class="bg-white rounded-lg overflow-hidden border-0" style="box-shadow: 0px 0px 0px 1px rgb(140,140,140,0.2)">
+  <img src="https://images.unsplash.com/photo-1682695795931-a546abdb6733?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="h-[75px] w-full object-cover">
+  <div class="profile flex flex-col items-center justify-center mt-[-2.9rem]">
+    <img
+      src="{{imgProfileTemp}}"
+      class="img-perfil w-20 h-20 object-cover mb-2 rounded-full border-2 box-content border-primary-500"
+    >
+    <div *ngIf="!htmlDefinitivo">
+      <strong class="block text-primary-500 font-inter text-center font-semibold text-lg">Victor Henri Vargas</strong>
+      <p class="block px-4 mt-2 pb-4 mb-1 text-center leading-5 font-thin font-inter text-smaller text-neutral-600 border-b-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, iste fuga consectetur dicta tempore accusamus facilis assumenda. Eum aliquam quia saepe? Qui debitis, minus tempora animi eum officia totam laborum.</p>
+
+      <div class="information flex flex-col gap-2 w-full px-4 py-2">
+        <div class="flex flex-row w-full justify-between items-center">
+        <strong class="text-smaller uppercase font-semibold text-neutral-400 font-inter">PROFISSÃO</strong>
+        <span class="text-smaller font-medium font-inter text-primary-500 leading-none uppercase">Desenvolvedor Web</span>
+        </div>
+        <div class="flex flex-row w-full justify-between items-center">
+          <strong class="text-smaller uppercase font-semibold text-neutral-400 font-inter">IDADE</strong>
+          <span class="text-smaller font-medium font-inter text-primary-500 leading-none uppercase">19</span>
+        </div>
+        <div class="flex flex-row w-full justify-between items-center">
+          <strong class="text-smaller uppercase font-semibold text-neutral-400 font-inter">EMPREGADO</strong>
+          <span class="text-smaller font-medium font-inter text-primary-500 leading-none uppercase">SIM</span>
+        </div>
+        <div class="flex flex-row w-full justify-between items-center">
+          <strong class="text-smaller uppercase font-semibold text-neutral-400 font-inter">LOCAL</strong>
+          <span class="text-smaller font-medium font-inter text-primary-500 leading-none uppercase">São Paulo</span>
+        </div>
+        <div class="flex flex-row w-full justify-between items-center">
+          <strong class="text-smaller uppercase font-semibold text-neutral-400 font-inter">EDUCAÇÃO</strong>
+          <span class="text-smaller font-medium font-inter text-primary-500 leading-none uppercase">Faculdade SENAI</span>
+        </div>
+        <div class="flex flex-row w-full justify-between items-center">
+          <strong class="text-smaller uppercase font-semibold text-neutral-400 font-inter">EMPRESA</strong>
+          <span class="text-smaller font-medium font-inter text-primary-500 leading-none uppercase">pARANOÁ</span>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="htmlDefinitivo" class="mt-3 mb-5">
+      <label class="text-white custom-file-upload bg-orange-300 p-2 rounded cursor-pointer mb-3 hover:bg-orange-400 shadow-sm shadow-gray-500">
+        <input type="file" (change)="onFileSelected($event)" class="hidden">
+        Escolher Imagem
+      </label>
+    </div>
+  </div>
+</aside>
+

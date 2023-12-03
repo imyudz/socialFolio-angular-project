@@ -14,7 +14,7 @@ export class AuthService {
   private apiURL = "http://localhost:8080/api/v1/demo"
   private loggedIn = new BehaviorSubject<boolean>(false);
   private tokenKey = "token";
-  private _userID: number | null = null;
+  private userIdKey = "userId";
 
 
   constructor(private http: HttpClient, private router: Router) { }
@@ -49,7 +49,7 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem(this.tokenKey);
-    this.userID = null;
+    localStorage.removeItem(this.userIdKey);
     this.setLoggedIn(false);
     this.router.navigate(['/login']);
   }
@@ -74,9 +74,9 @@ export class AuthService {
   }
 
   public get userID(): number | null {
-    return this._userID;
+    return localStorage.getItem(this.userIdKey) && localStorage.getItem(this.userIdKey) !== "" ? Number(localStorage.getItem(this.userIdKey)) : null;
   }
   public set userID(value: number | null) {
-    this._userID = value;
+    localStorage.setItem(this.userIdKey, value !== null ? value.toString() : "");
   }
 }

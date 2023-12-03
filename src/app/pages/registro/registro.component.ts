@@ -153,19 +153,20 @@ export class RegistroComponent {
       dadosFormulario.append("password", this.registerForm.get("confirmeSenha")?.value);
       dadosFormulario.append("dtNasc", this.registerForm.get("dataNascimento")?.value);
       dadosFormulario.append("phone", this.registerForm.get("telefone")?.value);
-      if (this.selectedCoverFile){
-        dadosFormulario.append("avatar", this.selectedCoverFile, this.selectedCoverFile?.name);
+      if (this.selectedProfileFile){
+        dadosFormulario.append("avatar", this.selectedProfileFile, this.selectedProfileFile?.name);
       }
       dadosFormulario.append("description", this.registerForm.get("descricao")?.value);
       dadosFormulario.append("state", this.registerForm.get("estado")?.value);
       dadosFormulario.append("city", this.registerForm.get("cidade")?.value);
-      if (this.selectedProfileFile) {
-        dadosFormulario.append("coverImg", this.selectedProfileFile, this.selectedProfileFile?.name);
+      if (this.selectedCoverFile) {
+        dadosFormulario.append("coverImg", this.selectedCoverFile, this.selectedCoverFile?.name);
       }
       dadosFormulario.append("employee", this.registerForm.get("empregado")?.value);
       dadosFormulario.append("workplace", this.registerForm.get("localEmpresa")?.value);
       dadosFormulario.append("recent_Education", this.registerForm.get("educacao")?.value);
       dadosFormulario.append("current_Company", this.registerForm.get("empresa")?.value);
+      dadosFormulario.append("profission", this.registerForm.get("profissao")?.value)
 
     this.authService.register(dadosFormulario).subscribe(
       response =>{

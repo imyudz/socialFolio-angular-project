@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { UserDetailsResponse } from 'src/app/services/models/UserDetailsResponse.model';
 
 @Component({
   selector: 'app-post-section',
@@ -9,7 +10,22 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./post-section.component.css']
 })
 export class PostSectionComponent {
+
+  userDetails: UserDetailsResponse | null = null;
+  private userId: number | null = null;
+
   constructor(authService: AuthService, router: Router, apiService: ApiService){
-    console.log("ID DO USUÁRIO LOGADO: ", authService.userID);
+    if (authService.userID){
+      this.userId = authService.userID;
+      apiService.getUserDetails(this.userId).subscribe({
+        next: (response: UserDetailsResponse) => {
+          console.log(response);
+          this.userDetails = response;
+        },
+        error: (error) => {
+          console.log("Erro ao obter as informações de usuário", error);
+        }
+      });
+    }
   }
 }
