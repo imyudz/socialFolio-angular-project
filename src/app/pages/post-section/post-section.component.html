@@ -1,5 +1,5 @@
-<div class="grid items-start max-w-6xl grid-cols-12 gap-6 pt-20 mx-auto mb-12 px-4">
-  <app-perfil-sidebar class="col-span-3"></app-perfil-sidebar>
+<div *ngIf="userDetails" class="grid items-start lg:max-w-[100rem] max-w-6xl grid-cols-12 gap-6 pt-20 mx-auto mb-12 px-4">
+  <app-perfil-sidebar [dadosPerfilRecebido]="userDetails" class="col-span-3"></app-perfil-sidebar>
   <main class="col-span-6 flex flex-col gap-4">
     <app-post></app-post>
     <app-post></app-post>
