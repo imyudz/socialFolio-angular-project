@@ -5,11 +5,12 @@ import { CurriculoSectionComponent } from './curriculo-section.component';
 
 @NgModule({
   declarations: [
-    CurriculoSectionComponent
+    CurriculoSectionComponent,
   ],
   imports: [
     CommonModule,
     SharedModule
+
   ]
 })
 export class CurriculoSectionModule { }

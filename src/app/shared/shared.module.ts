@@ -4,11 +4,13 @@ import { HeaderComponent } from "./components/header/header.component";
 import { PerfilSidebarComponent } from "./components/perfil-sidebar/perfil-sidebar.component";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { RouterModule } from "@angular/router";
+import { AvatarComponentComponent } from './components/avatar-component/avatar-component.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    PerfilSidebarComponent
+    PerfilSidebarComponent,
+    AvatarComponentComponent
     // Outros componentes compartilhados, se houver
   ],
   imports: [
@@ -19,7 +21,8 @@ import { RouterModule } from "@angular/router";
   ],
   exports: [
     HeaderComponent,
-    PerfilSidebarComponent
+    PerfilSidebarComponent,
+    AvatarComponentComponent
     // Exporta os componentes para serem usados em outros módulos
   ]
 })
