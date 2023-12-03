@@ -176,6 +176,7 @@ export class RegistroComponent {
             title: "Sucesso!",
             icon: "success",
           })
+          console.log("Registrado");
           return this.router.navigate(['/login']);
         } else return;
       }, error => {
@@ -186,6 +187,7 @@ export class RegistroComponent {
           title: `Usuário ${dadosFormulario.get("email")} não criado`,
           icon: "error",
         });
+        console.log("erro: " + error.error.errorMessage)
       }
     );
 
