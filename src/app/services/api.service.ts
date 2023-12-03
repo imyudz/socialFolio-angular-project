@@ -1,8 +1,8 @@
+import { UserDetailsResponse } from './models/UserDetailsResponse.model';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { profileValues } from './Model/profile.model';
 
 @Injectable({
   providedIn: 'root'
@@ -10,11 +10,8 @@ import { profileValues } from './Model/profile.model';
 export class ApiService {
   constructor(private http: HttpClient, private router: Router) { }
 
-  public getProfileData(): Observable<any> {
-    const urlProfile = 'http://localhost:8080/api/v1/profile';
-    
-    return this.http.get<any>(urlProfile);
+  API_SERVICE_URL: string = 'http://localhost:8080/api/v1/demo';
+  public getUserDetails(userId: number): Observable<UserDetailsResponse> {
+    return this.http.get<UserDetailsResponse>(this.API_SERVICE_URL + `/userinfo/${userId}`);
   }
-
-
 }

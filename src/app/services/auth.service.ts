@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, catchError, map, of } from 'rxjs';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { AuthenticationResponse } from './models/AuthenticationResponse';
-import { LoginRequest } from './models/LoginRequest';
+import { AuthenticationResponse } from './models/AuthenticationResponse.model';
+import { LoginRequest } from './models/LoginRequest.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +14,8 @@ export class AuthService {
   private apiURL = "http://localhost:8080/api/v1/demo"
   private loggedIn = new BehaviorSubject<boolean>(false);
   private tokenKey = "token";
+  private userIdKey = "userId";
+
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -47,6 +49,7 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem(this.tokenKey);
+    localStorage.removeItem(this.userIdKey);
     this.setLoggedIn(false);
     this.router.navigate(['/login']);
   }
@@ -68,5 +71,12 @@ export class AuthService {
         return of(false);
       })
     );
+  }
+
+  public get userID(): number | null {
+    return localStorage.getItem(this.userIdKey) && localStorage.getItem(this.userIdKey) !== "" ? Number(localStorage.getItem(this.userIdKey)) : null;
+  }
+  public set userID(value: number | null) {
+    localStorage.setItem(this.userIdKey, value !== null ? value.toString() : "");
   }
 }
