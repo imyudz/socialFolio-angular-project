@@ -64,7 +64,6 @@ export class RegistroComponent {
   }
 
 
-
   loadProfileImage(event: Event): void | { notAllowedType: boolean } {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files.length > 0) {
