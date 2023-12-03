@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
-import { AuthenticationResponse } from './../../services/models/AuthenticationResponse';
-import { LoginRequest } from './../../services/models/LoginRequest';
+import { AuthenticationResponse } from '../../services/models/AuthenticationResponse.model';
+import { LoginRequest } from '../../services/models/LoginRequest.model';
 import { Component } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
@@ -35,7 +35,8 @@ export class LoginComponent {
     this.authService.login({email: this.email.value, password: this.password.value} as LoginRequest).subscribe({
       next: (response: AuthenticationResponse) => {
         console.log(response);
-        if (response.token) {
+        if (response.token && response.userId) {
+          this.authService.userID = response.userId;
           this.authService.setToken(response.token);
           this.authService.setLoggedIn(true);
           this.router.navigate(['/feed']);

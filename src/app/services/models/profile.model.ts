@@ -13,7 +13,6 @@ export class profileValues {
     state: string|undefined;
     coverImg: string|undefined;
     profissao: string|undefined;
-    job_Level: string|undefined;
     enterprise: string|undefined;
     employee: boolean|undefined;
     recent_Education:  string|undefined;

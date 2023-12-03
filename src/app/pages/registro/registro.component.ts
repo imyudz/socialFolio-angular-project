@@ -25,7 +25,7 @@ export class RegistroComponent {
       sobrenome: ['', Validators.required],
       nomeSocial: [''],
       email: ['', [Validators.required, Validators.email]],
-      dataNascimento: ['', Validators.required],
+      dataNascimento: ['', [Validators.required, this.validateData()]],
       telefone: ['', [Validators.pattern(/^\(\d{2}\)\s\d{4,5}-\d{4}$/), Validators.required]],
       senha: ['', [Validators.required, Validators.minLength(6)]],
       confirmeSenha: ['', [Validators.required, Validators.minLength(6), this.verificarSenhas()]],
@@ -133,6 +133,17 @@ export class RegistroComponent {
     };
   };
 
+  validateData(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const data = new Date(control.value);
+      const dataAtual = new Date();
+      if (data > dataAtual) {
+        return { dataInvalida: true };
+      }
+      return null;
+    }
+  }
+
   onSubmit() {
     const dadosFormulario = new FormData();
       dadosFormulario.append("firstName", this.registerForm.get("nome")?.value);
@@ -167,9 +178,11 @@ export class RegistroComponent {
           return this.router.navigate(['/login']);
         } else return;
       }, error => {
+        error.status === 400 &&
+
         Swal.fire({
-          text: error.error.message,
-          title: "Algo de errado ocorreu" + error.status,
+          text: error.error.errorMessage,
+          title: `Usuário ${dadosFormulario.get("email")} não criado`,
           icon: "error",
         });
       }
