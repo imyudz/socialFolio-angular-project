@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { AuthService } from 'src/app/services/auth.service';
@@ -14,10 +14,13 @@ export class PostSectionComponent {
   userDetails: UserDetailsResponse | null = null;
   private userId: number | null = null;
 
-  constructor(authService: AuthService, router: Router, apiService: ApiService){
-    if (authService.userID){
-      this.userId = authService.userID;
-      apiService.getUserDetails(this.userId).subscribe({
+  constructor(private authService: AuthService, private router: Router, private apiService: ApiService){
+  }
+
+  ngOnInit(): void {
+    if (this.authService.userID){
+      this.userId = this.authService.userID;
+      this.apiService.getUserDetails(this.userId).subscribe({
         next: (response: UserDetailsResponse) => {
           console.log(response);
           this.userDetails = response;
