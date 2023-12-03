@@ -164,14 +164,16 @@ export class RegistroComponent {
             title: "Sucesso!",
             icon: "success",
           })
+          console.log("Registrado");
           return this.router.navigate(['/login']);
         } else return;
       }, error => {
         Swal.fire({
-          text: error.error.message,
-          title: "Algo de errado ocorreu" + error.status,
+          text: error.error.errorMessage,
+          title: "Algo de errado ocorreu " + error.status,
           icon: "error",
         });
+        console.log("erro: " + error.error.errorMessage)
       }
     );
 
