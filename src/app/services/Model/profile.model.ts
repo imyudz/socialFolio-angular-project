@@ -20,22 +20,7 @@ export class profileValues {
     current_Company:  string|undefined;
 }
 
-// dtNascUser: string =  '' //modelo de entrada de data 2021-12-02
-// nomeSocial: any ='';
-// cidadeUser: any ='';
-// estadoUser: any = '';
-// sobrenomeUser: any = '';
-// nameUser: any = '';
-// emailUser: any = ''
-// phoneNumber: any ='';
-// profissao: any = '';
-// experiencia: any = '';
-// trampoSelecionado: any = '';
-// descricao: any ='';
-// enterprise: any = '';
-// trampa: string = '';
-// educacao: string = '';
-// workplace: string = '';
+//modelo de entrada de data 2021-12-02
 
 
 
