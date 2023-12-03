@@ -16,6 +16,7 @@ const routes: Routes = [
   { path: "login", component: LoginComponent, data: {layout: "login-layout"}},
   { path: "register", component: RegistroComponent, data: {layout: "login-layout"}},
   { path: "**", redirectTo: "login" }
+
 ];
 
 @NgModule({

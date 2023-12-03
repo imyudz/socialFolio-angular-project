@@ -15,6 +15,7 @@ import { AuthInterceptor } from './services/auth.interceptor';
 import { RegistroModule } from './pages/registro/registro.module';
 
 
+
 @NgModule({
   declarations: [
     AppComponent
