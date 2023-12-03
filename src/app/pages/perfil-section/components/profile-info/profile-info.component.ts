@@ -2,6 +2,7 @@ import { Component, NgModule, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import { UserDetailsResponse } from 'src/app/services/models/UserDetailsResponse.model';
 
+
 @Component({
   selector: 'app-profile-info',
   templateUrl: './profile-info.component.html',
@@ -11,9 +12,9 @@ export class ProfileInfoComponent implements OnInit {
 
   constructor(public servico: ApiService){}
 
-  val:UserDetailsResponse[]=[];
+  dadosPerfil: UserDetailsResponse | null = null;
 
-  dtNascUser: string =  '' //modelo de entrada de data 2021-12-02
+  dtNascUser: any =''; //modelo de entrada de data 2021-12-02
   nomeSocial: any ='';
   cidadeUser: any ='';
   estadoUser: any = '';
@@ -27,8 +28,8 @@ export class ProfileInfoComponent implements OnInit {
   descricao: any ='';
   enterprise: any = '';
   trampa: string = '';
-  educacao: string = '';
-  workplace: string = '';
+  educacao: any = '';
+  workplace: any = '';
   niveis = [
     'Selecione', 'Estagiario/trainne', 'Junior','Pleno','Senior'
   ]
@@ -38,6 +39,7 @@ export class ProfileInfoComponent implements OnInit {
     this.trampoSelecionado = 'Selecione'
     this.getProfileData();
   }
+  
 
   onChange(){
     this.trampoSelecionado = this.niveis.filter((x) => x == this.trampoSelecionado)[0];
@@ -51,15 +53,22 @@ export class ProfileInfoComponent implements OnInit {
     console.log('sobrenome',  this.sobrenomeUser)
   }
 
-    getProfileData() {
-    this.servico.getUserDetails(1).subscribe((resposta : any)=>
+    getProfileData() 
     {
-      console.log(resposta.data);
-      this.val = (resposta.data);
-      console.log(this.val);
-    })
-  }
-
+      this.servico.getUserDetails(1).subscribe((resposta : any)=>
+      {
+        this.dadosPerfil = resposta;
+        console.log(this.dadosPerfil)
+        //this.arrumaDados(this.val)
+      })
+    }
+    // arrumaDados(val: UserDetailsResponse[] | null) {
+    //   this.sobrenomeUser = val.name?.split(' ')[this.val.name?.split(' ').length - 1];
+    //   this.nameUser = this.val.name?.split(' ');
+    //   this.trampa = this.val.employee == true ? 'Sim' : 'Não';
+    // }
 
 }
+
+ 
 

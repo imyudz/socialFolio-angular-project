@@ -1,40 +1,13 @@
-<div class="pl-2 pr-2 flex items-center gap-[3rem] bg-white w-[18.71rem] h-[9.7rem] pt-1.5 rounded-md shadow-md overflow-y-hidden">
-  <div>
-  <img class="w-27 h-27 rounded-full border-2 border-solid border-gray-500" src="../../../../assets/imgAvatar/avatar.png" alt="">
-  <div class="font-medium text-primary-500">
-      <div class="text-center">
-       <h2 href="">John doe</h2>
-      </div>
-      <div class="text-center text-sm text-gray-500 dark:text-gray-400">
+<div class="pl-2 pr-2  items-center gap-[3rem] bg-white w-[18.71rem] h-[9.7rem] pt-1.5 rounded-md shadow-md overflow-y-auto">
+  <div class="flex flex-col items-center justify-center" *ngFor="let u of usuarios">
+    <img class="border-2 border-gray-500 border-solid rounded-full w-14 h-14" src="{{'data:image/*;base64,' + this.u.avatar}}" alt="">
+    <div class="mt-2 font-medium text-center text-primary-500">
+      <h2>{{u.name}}</h2>
+      <div class="text-sm text-gray-500 dark:text-gray-400">
         <a href="">Visitar</a>
       </div>
-  </div>
-  </div>
-
-  <div>
-    <img class="w-27 h-27 rounded-full border-2 border-solid border-gray-500" src="../../../../assets/imgAvatar/avatar.png" alt="">
-    <div class="font-medium text-primary-500">
-        <div class="text-center">John doe</div>
-        <div class="text-center text-sm text-gray-500 dark:text-gray-400">Visitar</div>
     </div>
   </div>
-
-  <div>
-    <img class="w-27 h-27 rounded-full border-2 border-solid border-gray-500" src="../../../../assets/imgAvatar/avatar.png" alt="">
-    <div class="font-medium text-primary-500">
-        <div class="text-center">John doe</div>
-        <div class="text-center text-sm text-gray-500 dark:text-gray-400">Visitar</div>
-    </div>
-  </div>
-
-  <div>
-    <img class="w-27 h-27 rounded-full border-2 border-solid border-gray-500" src="../../../../assets/imgAvatar/avatar.png" alt="">
-    <div class="font-medium text-primary-500">
-        <div class="text-center">John doe</div>
-        <div class="text-center text-sm text-gray-500 dark:text-gray-400">Visitar</div>
-    </div>
-  </div>
-
 </div>
 
 

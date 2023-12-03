@@ -14,4 +14,9 @@ export class ApiService {
   public getUserDetails(userId: number): Observable<UserDetailsResponse> {
     return this.http.get<UserDetailsResponse>(this.API_SERVICE_URL + `/userinfo/${userId}`);
   }
+
+  public getAllUsers(): Observable<UserDetailsResponse[]> {
+    console.log("getAllUsers")
+    return this.http.get<UserDetailsResponse[]>(this.API_SERVICE_URL + '/usersinfo')
+  }
 }
