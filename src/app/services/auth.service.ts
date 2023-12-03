@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, catchError, map, of } from 'rxjs';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { AuthenticationResponse } from './models/AuthenticationResponse';
@@ -11,6 +11,7 @@ import { LoginRequest } from './models/LoginRequest';
 export class AuthService {
 
   private authURL = "http://localhost:8080/api/v1/auth"
+  private apiURL = "http://localhost:8080/api/v1/demo"
   private loggedIn = new BehaviorSubject<boolean>(false);
   private tokenKey = "token";
 
@@ -48,5 +49,24 @@ export class AuthService {
     localStorage.removeItem(this.tokenKey);
     this.setLoggedIn(false);
     this.router.navigate(['/login']);
+  }
+
+  isTokenActive(): Observable<Boolean> {
+    const token = this.getToken();
+    if (!token) {
+      return of(false); //Se não houver token, o token não está mais ativo
+    }
+    return this.http.get<Boolean>(this.apiURL).pipe(
+      map(response => {
+        console.log(response);
+        return true;
+      }), //se a resposta for bem sucedida, o token está ativo
+      catchError(error => {
+        if (error.status === 403) {
+          this.logout(); // Se o token não for válido (403), faz logout
+        }
+        return of(false);
+      })
+    );
   }
 }

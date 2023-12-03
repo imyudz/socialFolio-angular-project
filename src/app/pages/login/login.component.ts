@@ -13,7 +13,9 @@ import Swal from 'sweetalert2';
 })
 export class LoginComponent {
 
-  constructor(private authService: AuthService, private formBuilder: FormBuilder, private router: Router) { }
+  constructor(private authService: AuthService, private formBuilder: FormBuilder, private router: Router) {
+    this.authService.logout();
+  }
 
   loginForm = this.formBuilder.group({
     email: ['', [Validators.required, Validators.email]],
@@ -44,13 +46,13 @@ export class LoginComponent {
         error.status === 403 ?
           Swal.fire({
             text: "Email ou senha inválidos",
-            title: "Errro ao fazer login",
+            title: "Erro ao fazer login",
             icon: "error",
           })
         :
           Swal.fire({
             text: "Um erro inesperado aconteceu",
-            title: "ERRO: " + error.status,
+            title: `Erro: ${error.status}`,
             icon: "error",
           });
       }
