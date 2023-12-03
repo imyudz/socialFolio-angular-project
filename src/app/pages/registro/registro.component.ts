@@ -25,7 +25,7 @@ export class RegistroComponent {
       sobrenome: ['', Validators.required],
       nomeSocial: [''],
       email: ['', [Validators.required, Validators.email]],
-      dataNascimento: ['', Validators.required],
+      dataNascimento: ['', [Validators.required, this.validateData()]],
       telefone: ['', [Validators.pattern(/^\(\d{2}\)\s\d{4,5}-\d{4}$/), Validators.required]],
       senha: ['', [Validators.required, Validators.minLength(6)]],
       confirmeSenha: ['', [Validators.required, Validators.minLength(6), this.verificarSenhas()]],
@@ -133,6 +133,17 @@ export class RegistroComponent {
     };
   };
 
+  validateData(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const data = new Date(control.value);
+      const dataAtual = new Date();
+      if (data > dataAtual) {
+        return { dataInvalida: true };
+      }
+      return null;
+    }
+  }
+
   onSubmit() {
     const dadosFormulario = new FormData();
       dadosFormulario.append("firstName", this.registerForm.get("nome")?.value);
@@ -142,19 +153,20 @@ export class RegistroComponent {
       dadosFormulario.append("password", this.registerForm.get("confirmeSenha")?.value);
       dadosFormulario.append("dtNasc", this.registerForm.get("dataNascimento")?.value);
       dadosFormulario.append("phone", this.registerForm.get("telefone")?.value);
-      if (this.selectedCoverFile){
-        dadosFormulario.append("avatar", this.selectedCoverFile, this.selectedCoverFile?.name);
+      if (this.selectedProfileFile){
+        dadosFormulario.append("avatar", this.selectedProfileFile, this.selectedProfileFile?.name);
       }
       dadosFormulario.append("description", this.registerForm.get("descricao")?.value);
       dadosFormulario.append("state", this.registerForm.get("estado")?.value);
       dadosFormulario.append("city", this.registerForm.get("cidade")?.value);
-      if (this.selectedProfileFile) {
-        dadosFormulario.append("coverImg", this.selectedProfileFile, this.selectedProfileFile?.name);
+      if (this.selectedCoverFile) {
+        dadosFormulario.append("coverImg", this.selectedCoverFile, this.selectedCoverFile?.name);
       }
       dadosFormulario.append("employee", this.registerForm.get("empregado")?.value);
       dadosFormulario.append("workplace", this.registerForm.get("localEmpresa")?.value);
       dadosFormulario.append("recent_Education", this.registerForm.get("educacao")?.value);
       dadosFormulario.append("current_Company", this.registerForm.get("empresa")?.value);
+      dadosFormulario.append("profission", this.registerForm.get("profissao")?.value)
 
     this.authService.register(dadosFormulario).subscribe(
       response =>{
@@ -168,9 +180,11 @@ export class RegistroComponent {
           return this.router.navigate(['/login']);
         } else return;
       }, error => {
+        error.status === 400 &&
+
         Swal.fire({
           text: error.error.errorMessage,
-          title: "Algo de errado ocorreu " + error.status,
+          title: `Usuário ${dadosFormulario.get("email")} não criado`,
           icon: "error",
         });
         console.log("erro: " + error.error.errorMessage)
