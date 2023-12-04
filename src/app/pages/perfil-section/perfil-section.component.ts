@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { ApiService } from 'src/app/services/api.service';
+import { AuthService } from 'src/app/services/auth.service';
+import { UserDetailsResponse } from 'src/app/services/models/UserDetailsResponse.model';
 
 
 @Component({

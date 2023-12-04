@@ -4,7 +4,10 @@
           <h6 class="text-xl font-bold text-blueGray-700">
             Minha Conta
           </h6>
-          <button (onclick)="salvarDados()" type="button" value="salvar" class="pl-2 pr-2 ml-5 text-white bg-orange-300 rounded shadow-sm shadow-gray-500 hover:bg-orange-400">Atualizar</button>
+          <div class="flex">
+            <button (click)="this.logoutSystem()"  value="salvar" class="pl-2 pr-2 ml-5 text-white bg-orange-300 rounded shadow-sm shadow-gray-500 hover:bg-orange-400">Logout</button>
+            <button (click)="this.salvarDados()"  value="salvar" class="pl-2 pr-2 ml-5 text-white bg-orange-300 rounded shadow-sm shadow-gray-500 hover:bg-orange-400">Atualizar</button>
+          </div>
         </div>
       </div>
       <div class="flex-auto px-4 py-10 pt-0 lg:px-10">
@@ -16,56 +19,64 @@
             <div class="w-full px-4 lg:w-6/12">
               <div class="w-full mb-3 ">
                 <label class="block mb-2 text-xs font-bold uppercase text-blueGray-600" >Nome Social:</label>
-                <input name="socialName" type="text" class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border-0 rounded shadow placeholder-blueGray-300 text-blueGray-600 focus:outline-none focus:ring" placeholder="Nome social" [(ngModel)]="nomeSocial">
+                <input name="socialName"  type="text" class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border-0 rounded shadow placeholder-blueGray-300 text-blueGray-600 focus:outline-none focus:ring"  placeholder="Nome social"  [(ngModel)]="nomeSocial"  [ngModelOptions]="{standalone: true}" *ngIf="dadosPerfil">
               </div>
             </div>
             <div class="w-full px-4 lg:w-6/12">
               <div class="w-full mb-3 ">
                 <label class="block mb-2 text-xs font-bold uppercase text-blueGray-600" htmlfor="grid-password">Endereço de email:</label>
-                <input type="email" class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border-0 rounded shadow placeholder-blueGray-300 text-blueGray-600 focus:outline-none focus:ring"  placeholder="your.email@domain.com" [(ngModel)]="emailUser">
+                <input type="email" class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border-0 rounded shadow placeholder-blueGray-300 text-blueGray-600 focus:outline-none focus:ring"  placeholder="your.email@domain.com" [(ngModel)]="emailUser" [ngModelOptions]="{standalone: true}">
               </div>
             </div>
             <div class="w-full px-4 lg:w-6/12">
               <div class="w-full mb-3 ">
                 <label class="block mb-2 text-xs font-bold uppercase text-blueGray-600" htmlfor="grid-password">Primeiro Nome:</label>
-                <input name="firstName" type="text" class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border-0 rounded shadow placeholder-blueGray-300 text-blueGray-600 focus:outline-none focus:ring" placeholder="Nome" [(ngModel)]="nameUser" >
+                <input name="firstName" id="firstName" type="text" class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border-0 rounded shadow placeholder-blueGray-300 text-blueGray-600 focus:outline-none focus:ring" placeholder="Nome" [(ngModel)]="nameUser" [ngModelOptions]="{standalone: true}" >
               </div>
             </div>
             <div class="w-full px-4 lg:w-6/12">
               <div class="w-full mb-3 ">
                 <label class="block mb-2 text-xs font-bold uppercase text-blueGray-600" htmlfor="grid-password">Sobrenome:</label>
-                <input name="surname" type="text" class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border-0 rounded shadow placeholder-blueGray-300 text-blueGray-600 focus:outline-none focus:ring "placeholder="Sobrenome" [(ngModel)]="sobrenomeUser">
+                <input name="surname" type="text" class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border-0 rounded shadow placeholder-blueGray-300 text-blueGray-600 focus:outline-none focus:ring "placeholder="Sobrenome" [(ngModel)]="sobrenomeUser" [ngModelOptions]="{standalone: true}">
               </div>
             </div>
             <div class="w-full px-4 lg:w-6/12">
               <div class="w-full mb-3 ">
                 <label class="block mb-2 text-xs font-bold uppercase text-blueGray-600" htmlfor="grid-password">Profissão:</label>
-                <input name="profissao" type="text" class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border-0 rounded shadow placeholder-blueGray-300 text-blueGray-600 focus:outline-none focus:ring "placeholder="Digite sua profissão" [(ngModel)]="profissao">
+                <input name="profissao" type="text" class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border-0 rounded shadow placeholder-blueGray-300 text-blueGray-600 focus:outline-none focus:ring "placeholder="Digite sua profissão" [(ngModel)]="profissao" [ngModelOptions]="{standalone: true}">
               </div>
             </div>
             <div class="w-full px-4 lg:w-6/12">
               <div class="w-full mb-3 ">
+                <label class="block mb-2 text-xs font-bold uppercase text-blueGray-600" htmlfor="grid-password">Empregado:</label>
+                <select name="trabaia" type="text" class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border-0 rounded shadow placeholder-blueGray-300 text-blueGray-600 focus:outline-none focus:ring" [(ngModel)]="trampa" [ngModelOptions]="{standalone: true}">
+                  <option value="">Selecione</option> 
+                  <option value="1">Sim</option>
+                  <option value="0">Não</option>
+                </select>
+              </div>
+            </div>
+            <!-- <div class="w-full px-4 lg:w-6/12">
+              <div class="w-full mb-3 ">
                 <label class="block mb-2 text-xs font-bold uppercase text-blueGray-600" htmlfor="grid-password">Experiencia:</label>
-                <!-- <input name="experiencia" type="text" class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border-0 rounded shadow placeholder-blueGray-300 text-blueGray-600 focus:outline-none focus:ring "placeholder="Sobrenome" [(ngModel)]="sobrenomeUser"> -->
-
                 <select  class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border-0 rounded shadow placeholder-blueGray-300 text-blueGray-600 focus:outline-none focus:ring"  name="experiencia" type="text" placeholder="Nome" [(ngModel)]="trampoSelecionado" (change)="onChange()">
                   <option *ngFor="let t of niveis" [value]="t">
                       {{ t }}
                   </option>
               </select>
               </div>
-            </div>
+            </div> -->
 
             <div class="w-full px-4 lg:w-6/12">
                 <div class="w-full mb-3 ">
                   <label class="block mb-2 text-xs font-bold uppercase text-blueGray-600" htmlfor="grid-password">Telefone:</label>
-                  <input name="phone" type="text" class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border-0 rounded shadow placeholder-blueGray-300 text-blueGray-600 focus:outline-none focus:ring "placeholder="(xx) xxxxx-xxxx" [(ngModel)]="phoneNumber">
+                  <input name="phone" type="text" class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border-0 rounded shadow placeholder-blueGray-300 text-blueGray-600 focus:outline-none focus:ring "placeholder="(xx) xxxxx-xxxx" [(ngModel)]="phoneNumber" [ngModelOptions]="{standalone: true}" >
                 </div>
               </div>
               <div class="w-full px-4 lg:w-6/12">
                 <div class="w-full mb-3 ">
                   <label class="block mb-2 text-xs font-bold uppercase text-blueGray-600" htmlfor="grid-password">data de nascimento:</label>
-                  <input name="dtBirth" type="date" class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border-0 rounded shadow placeholder-blueGray-300 text-blueGray-600 focus:outline-none focus:ring " [(ngModel)]="dtNascUser">
+                  <input name="dtBirth" type="date" class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border-0 rounded shadow placeholder-blueGray-300 text-blueGray-600 focus:outline-none focus:ring " [(ngModel)]="dtNascUser" [ngModelOptions]="{standalone: true}">
                 </div>
               </div>
           </div>
@@ -79,35 +90,26 @@
             <div class="w-full px-4 lg:w-6/12">
               <div class="w-full mb-3 ">
                 <label class="block mb-2 text-xs font-bold uppercase text-blueGray-600" htmlfor="grid-password">Estado</label>
-                <input name="locate" type="text" class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border-0 rounded shadow placeholder-blueGray-300 text-blueGray-600 focus:outline-none focus:ring" placeholder="Digite o estado de seu endereço" [(ngModel)]="estadoUser">
+                <input name="locate" type="text" class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border-0 rounded shadow placeholder-blueGray-300 text-blueGray-600 focus:outline-none focus:ring" placeholder="Digite o estado de seu endereço" [(ngModel)]="estadoUser" [ngModelOptions]="{standalone: true}">
               </div>
             </div>
             <div class="w-full px-4 lg:w-6/12">
               <div class="w-full mb-3 ">
                 <label class="block mb-2 text-xs font-bold uppercase text-blueGray-600" htmlfor="grid-password">Cidade</label>
-                <input name="city" type="email" class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border-0 rounded shadow placeholder-blueGray-300 text-blueGray-600 focus:outline-none focus:ring" placeholder="Digite sua cidade" [(ngModel)]="cidadeUser">
+                <input name="city" type="email" class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border-0 rounded shadow placeholder-blueGray-300 text-blueGray-600 focus:outline-none focus:ring" placeholder="Digite sua cidade" [(ngModel)]="cidadeUser" [ngModelOptions]="{standalone: true}">
               </div>
             </div>
-            <div class="w-full px-4 lg:w-6/12">
-              <div class="w-full mb-3 ">
-                <label class="block mb-2 text-xs font-bold uppercase text-blueGray-600" htmlfor="grid-password">Empregado:</label>
-                <select name="trabaia" type="text" class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border-0 rounded shadow placeholder-blueGray-300 text-blueGray-600 focus:outline-none focus:ring" [(ngModel)]="trampa">
-                  <option value="">Selecione</option> 
-                  <option value="1">Sim</option>
-                  <option value="0">Não</option>
-                </select>
-              </div>
-            </div>
+            
             <div class="w-full px-4 lg:w-6/12">
               <div class="w-full mb-3 ">
                 <label class="block mb-2 text-xs font-bold uppercase text-blueGray-600" htmlfor="grid-password">Empresa:</label>
-                <input name="enterprise" type="text" class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border-0 rounded shadow placeholder-blueGray-300 text-blueGray-600 focus:outline-none focus:ring" placeholder="Digite o nome da sua empresa" [(ngModel)]="enterprise">
+                <input name="enterprise" type="text" class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border-0 rounded shadow placeholder-blueGray-300 text-blueGray-600 focus:outline-none focus:ring" placeholder="Digite o nome da sua empresa" [(ngModel)]="enterprise" [ngModelOptions]="{standalone: true}">
               </div>
             </div>
             <div class="w-full px-4 lg:w-6/12">
               <div class="w-full mb-3 ">
                 <label class="block mb-2 text-xs font-bold uppercase text-blueGray-600" htmlfor="grid-password">Local de trabalho:</label>
-                <input name="enterprise" type="text" class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border-0 rounded shadow placeholder-blueGray-300 text-blueGray-600 focus:outline-none focus:ring" placeholder="Digite a localidade da empresa" [(ngModel)]="workplace">
+                <input name="enterprise" type="text" class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border-0 rounded shadow placeholder-blueGray-300 text-blueGray-600 focus:outline-none focus:ring" placeholder="Digite a localidade da empresa" [(ngModel)]="workplace" [ngModelOptions]="{standalone: true}">
               </div>
             </div>
           </div>
@@ -120,11 +122,11 @@
             <div class="w-full px-4 lg:w-12/12">
               <div class="w-full mb-3 ">
                 <label class="block mb-2 text-xs font-bold uppercase text-blueGray-600" htmlfor="grid-password">Educação:</label>
-                <input name="desc" type="text" class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border-0 rounded shadow placeholder-blueGray-300 text-blueGray-600 focus:outline-none focus:ring" rows="4" placeholder="Curso ou faculdade" [(ngModel)]="educacao"/> 
+                <input name="desc" type="text" class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border-0 rounded shadow placeholder-blueGray-300 text-blueGray-600 focus:outline-none focus:ring" rows="4" placeholder="Curso ou faculdade" [(ngModel)]="educacao" [ngModelOptions]="{standalone: true}"/> 
               </div>
               <div class="w-full mb-3 ">
                 <label class="block mb-2 text-xs font-bold uppercase text-blueGray-600" htmlfor="grid-password">Sobre mim:</label>
-                <textarea name="desc" type="text" class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border-0 rounded shadow placeholder-blueGray-300 text-blueGray-600 focus:outline-none focus:ring" rows="4" placeholder="Fale um pouco sobre você" [(ngModel)]="descricao"> </textarea>
+                <textarea name="desc" type="text" class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border-0 rounded shadow placeholder-blueGray-300 text-blueGray-600 focus:outline-none focus:ring" rows="4" placeholder="Fale um pouco sobre você" [(ngModel)]="descricao" [ngModelOptions]="{standalone: true}"> </textarea>
               </div>
             </div>
           </div>
@@ -132,48 +134,3 @@
       </div>
 </article>
 
-
-<!--  -->
-
-<!-- 
-<div class="grid grid-cols-3 gap-4 p-5" id="formulario">
-        
-        <div >
-            <label for="sobrenome">Sobrenome:</label><br>
-            <input class="w-56 col-span-2 p-1 " id="nome"/>
-        </div>
-        <div class="">
-            <label for="dtNasc">Data de Nascimento:</label><br>
-            <input  class="w-56 col-span-3 p-1" id="dtNasc" type="date" [(ngModel)]="dtNascUser"/>
-        </div>
-        <div class="">
-            <label for="email">E-mail:</label><br>
-            <input  class="w-56 col-span-4 p-1" id="email" type="text" placeholder="your.email@domain.com" [(ngModel)]="emailUser"/>
-        </div>
-        <div class="">
-            <label for="phone">Telefone:</label><br>
-            <input  class="w-56 col-span-5 p-1" id="phone" type="text" placeholder="(xx) xxxxx-xxxx" [(ngModel)]="phoneNumber"/>
-        </div>
-        <div class="">
-            <label for="profissao">Profissão:</label><br>
-            <input   class="w-56 col-span-6 p-1" id="profissao" type="text" placeholder="Profissão" [(ngModel)]="profissao"/>
-        </div>
-        <div class="">
-            <label for="experiencia">Experiencia:</label><br>
-            <select  class="w-56 col-span-7 p-1" id="experiencia" type="text" placeholder="Nome" [(ngModel)]="trampoSelecionado" (change)="onChange()">
-                <option *ngFor="let t of niveis" [value]="t">
-                    {{ t }}
-                </option>
-            </select>
-        </div>
-        <div class="">
-            <label for="desc">S:</label><br>
-            <textarea  class="h-24 p-1 w-96" id="desc" placeholder="Descrição do usuario" [(ngModel)]="descricao"></textarea>
-        </div>        
-    </div>
-    
-    <div><button (onclick)="salvarDados()" type="button" value="salvar" class="p-2 ml-5 text-white bg-orange-300 rounded shadow-sm shadow-gray-500 hover:bg-orange-400">Atualizar</button></div>
-
-
-
- -->

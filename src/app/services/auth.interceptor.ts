@@ -27,7 +27,7 @@ export class AuthInterceptor implements HttpInterceptor {
       // Send cloned request with header to the next handler
       return next.handle(authReq).pipe(
         catchError((error: HttpErrorResponse) => {
-          error &&
+          error.status === 403 &&
             this.authService.logout(); // Logout user
           return throwError(error);
         })

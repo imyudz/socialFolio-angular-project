@@ -13,6 +13,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
 import { AuthInterceptor } from './services/auth.interceptor';
 import { RegistroModule } from './pages/registro/registro.module';
+import { MarkdownModule } from 'ngx-markdown';
 
 
 
@@ -33,7 +34,8 @@ import { RegistroModule } from './pages/registro/registro.module';
     LoginModule,
     HttpClientModule,
     ReactiveFormsModule,
-    RegistroModule
+    RegistroModule,
+    MarkdownModule.forRoot()
   ],
   providers: [
     AuthService,

@@ -15,10 +15,9 @@
       </li>
       <li>
 
-        <a routerLink="/curriculo" routerLinkActive="active" class="flex flex-col items-center justify-center text-xl font-normal leading-5 text-center text-white " style="min-height: 59px; min-width: 84px;">
-
+        <a (click)="redirecionarParaCurriculoUsuarioAtual()" class="cursor-pointer flex flex-col items-center justify-center text-xl font-normal leading-5 text-center text-white " style="min-height: 59px; min-width: 84px;">
           <fa-icon class="" [icon]="faFileLines"></fa-icon>
-          <span class="text-smaller">Currículo</span>
+          <span class="text-smaller">Meu Curriculo</span>
         </a>
       </li>
       <li>
