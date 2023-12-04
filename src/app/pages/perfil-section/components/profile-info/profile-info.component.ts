@@ -47,7 +47,10 @@ export class ProfileInfoComponent implements OnInit {
     console.log(this.trampoSelecionado)
   }
 
-
+  logoutSystem(){
+    console.log("logout pt-1")
+    this.auth.logout();
+  }
   salvarDados() {
     console.log('salvou');
     console.log('data', this.dtNascUser);
