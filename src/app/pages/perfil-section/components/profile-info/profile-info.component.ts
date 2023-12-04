@@ -1,6 +1,8 @@
-import { Component, NgModule, OnInit } from '@angular/core';
+import { Component, Input, NgModule, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { UserDetailsResponse } from 'src/app/services/models/UserDetailsResponse.model';
+
 
 @Component({
   selector: 'app-profile-info',
@@ -9,11 +11,12 @@ import { UserDetailsResponse } from 'src/app/services/models/UserDetailsResponse
 })
 export class ProfileInfoComponent implements OnInit {
 
-  constructor(public servico: ApiService){}
+  constructor(private servico: ApiService, private auth: AuthService){}
+  private userId: number | any = null;
 
-  val:UserDetailsResponse[]=[];
+  dadosPerfil: UserDetailsResponse | null = null;
 
-  dtNascUser: string =  '' //modelo de entrada de data 2021-12-02
+  dtNascUser: any =''; //modelo de entrada de data 2021-12-02
   nomeSocial: any ='';
   cidadeUser: any ='';
   estadoUser: any = '';
@@ -22,13 +25,12 @@ export class ProfileInfoComponent implements OnInit {
   emailUser: any = ''
   phoneNumber: any ='';
   profissao: any = '';
-  experiencia: any = '';
   trampoSelecionado: any = '';
   descricao: any ='';
   enterprise: any = '';
   trampa: string = '';
-  educacao: string = '';
-  workplace: string = '';
+  educacao: any = '';
+  workplace: any = '';
   niveis = [
     'Selecione', 'Estagiario/trainne', 'Junior','Pleno','Senior'
   ]
@@ -38,28 +40,48 @@ export class ProfileInfoComponent implements OnInit {
     this.trampoSelecionado = 'Selecione'
     this.getProfileData();
   }
+  
 
   onChange(){
     this.trampoSelecionado = this.niveis.filter((x) => x == this.trampoSelecionado)[0];
     console.log(this.trampoSelecionado)
   }
 
-  salvarDados(){
-    console.log('salvou')
-    console.log('data',  this.dtNascUser)
-    console.log('nome',  this.nameUser)
-    console.log('sobrenome',  this.sobrenomeUser)
+
+  salvarDados() {
+    console.log('salvou');
+    console.log('data', this.dtNascUser);
+    console.log('nome', this.nameUser);
+    console.log('sobrenome', this.sobrenomeUser);
+    // Adicione outras variáveis aqui conforme necessário
   }
 
-    getProfileData() {
-    this.servico.getUserDetails(1).subscribe((resposta : any)=>
-    {
-      console.log(resposta.data);
-      this.val = (resposta.data);
-      console.log(this.val);
-    })
+  getProfileData() {
+    if(this.auth.userID != null){
+      this.servico.getUserDetails(this.auth.userID).subscribe((resposta: any) => {
+        this.dadosPerfil = resposta;
+        console.log(this.dadosPerfil);
+        this.obtemData()
+      });
+    }
   }
+  obtemData() {
+    this.cidadeUser = this.dadosPerfil?.city;
+    this.nomeSocial = this.dadosPerfil?.socialName;
+    this.emailUser = this.dadosPerfil?.email;
+    this.estadoUser = this.dadosPerfil?.state;
+    this.sobrenomeUser = this.dadosPerfil?.name?.split(' ')[this.dadosPerfil?.name?.split(' ').length - 1];
+    this.nameUser = this.dadosPerfil?.name?.split(' ')[0];
+    this.phoneNumber = this.dadosPerfil?.phone;
+    this.descricao = this.dadosPerfil?.description;
+    this.profissao = this.dadosPerfil?.profission;
+    this.educacao = this.dadosPerfil?.recent_Education;
+    this.trampa = this.dadosPerfil?.employee == true ? '1' : '0';
+    this.workplace = this.dadosPerfil?.workplace;
+    this.enterprise = this.dadosPerfil?.current_Company;
+    this.dtNascUser = this.dadosPerfil?.dtNasc;
 
+  }
 
 }
 

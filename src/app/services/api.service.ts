@@ -16,7 +16,12 @@ export class ApiService {
     return this.http.get<UserDetailsResponse>(this.API_SERVICE_URL + `/userinfo/${userId}`);
   }
 
+
   public getCurriculumInfo(userId: number): Observable<CurriculoInfoResponse> {
     return this.http.get<CurriculoInfoResponse>(this.API_SERVICE_URL + `/curriculo/${userId}`);
+  }
+  public getAllUsers(): Observable<UserDetailsResponse[]> {
+    console.log("getAllUsers")
+    return this.http.get<UserDetailsResponse[]>(this.API_SERVICE_URL + '/usersinfo')
   }
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ApiService } from 'src/app/services/api.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { UserDetailsResponse } from 'src/app/services/models/UserDetailsResponse.model';
 
 @Component({
@@ -10,21 +12,22 @@ export class PerfilSidebarComponent implements OnInit {
   @Input() dadosPerfilRecebido: UserDetailsResponse | null = null;
   @Input() modeloHtmlTemp: boolean = false;
   dadosPerfil: UserDetailsResponse | null = null;
+  dadosImg: UserDetailsResponse | null = null;
   htmlDefinitivo: boolean = false;
-  imgProfileTemp: any = 'https://avatars.githubusercontent.com/u/103096096?v=4';
+  imgProfilePerfil: any = '';
+  imgCoverPerfil: any = '';
+
   imgProfile: any;
   imgCover: any;
   private _userAge: number | null = null;
+  private userId: number | any = null;
 
-  constructor() {
+  constructor(private servico: ApiService, private auth: AuthService) {
 
   }
 
   ngOnInit(): void {
-    if(this.modeloHtmlTemp === true){
-      this.htmlDefinitivo = true;
-    }
-    console.log(this.dadosPerfilRecebido);
+    console.log("Os dados recebidos:");
     if (this.dadosPerfilRecebido) {
       this.dadosPerfil = this.dadosPerfilRecebido;
       console.log("Dados Perfil", this.dadosPerfil);
@@ -38,14 +41,43 @@ export class PerfilSidebarComponent implements OnInit {
       //Lendo imagem
       if(this.dadosPerfil.avatar){
         this.imgProfile = 'data:image/*;base64,' + this.dadosPerfil.avatar
+        console.log(this.imgProfilePerfil)
       }
       if(this.dadosPerfil.coverImg){
         this.imgCover = 'data:image/*;base64,' + this.dadosPerfil.coverImg
       }
       console.log(this.imgCover);
     }
+    if(this.modeloHtmlTemp === true){
+      console.log('entrou em perfil')
+      this.htmlDefinitivo = true;
+      this.getProfileData();
+      console.log(this.dadosImg)
+      
+    }
   }
+  getProfileData() {
+    console.log('Entrou no getProfile')
 
+
+    if(this.auth.userID != null){
+      console.log('userId'+this.auth.userID)
+      this.servico.getUserDetails(this.auth.userID).subscribe((resposta: any) => {
+        console.log('resposta'+resposta)
+        this.dadosImg = resposta;
+        if(this.dadosImg){
+          if(this.dadosImg.avatar !=  null){
+            this.imgProfilePerfil = this.dadosImg.avatar
+            console.log(this.imgProfilePerfil)
+          }
+          if(this.dadosImg.coverImg){
+            this.imgCoverPerfil = this.dadosImg.coverImg
+          }
+        }
+      });
+    }
+    
+  }
   onFileSelected(event: any): void {
     const file: File = event.target.files[0];
 
@@ -54,7 +86,7 @@ export class PerfilSidebarComponent implements OnInit {
       // Por exemplo, exibir a imagem temporária.
       const reader = new FileReader();
       reader.onload = (e: any) => {
-        this.imgProfileTemp = e.target.result;
+        this.imgProfilePerfil = e.target.result;
       };
       reader.readAsDataURL(file);
 
