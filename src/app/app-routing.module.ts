@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: "profile", component: PerfilSectionComponent, canActivate: [authGuardFn], data: {layout: "default-layout"} },
   { path: "login", component: LoginComponent, data: {layout: "login-layout"}},
   { path: "register", component: RegistroComponent, data: {layout: "login-layout"}},
-  { path: "**", redirectTo: "login" }
+  { path: "**", redirectTo: "login", data: {layout: "login-layout"} }
 
 ];
 

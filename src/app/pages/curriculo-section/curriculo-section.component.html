@@ -1,5 +1,7 @@
-
-    <div *ngIf="userDetails" class="wrapper mt-[6rem] max-w-6xl max-h-full pb-10 mx-auto grid grid-cols-8 grid-rows-4 gap-4 items-start ">
+    <div *ngIf="showNotFoundImg" class="bg-white">
+      <img src="./../../../assets/404.jpg" alt="404 not found" class="w-full h-screen object-contain" >
+    </div>
+    <div *ngIf="userDetails && !showNotFoundImg" class="wrapper mt-[6rem] max-w-6xl max-h-full pb-10 mx-auto grid grid-cols-8 grid-rows-4 gap-4 items-start ">
 
      <!-- Perfil Sidebar na primeira linha -->
      <app-perfil-sidebar [dadosPerfilRecebido]="userDetails" class="col-span-2 row-span-3 mb-[2rem] "></app-perfil-sidebar>
@@ -7,9 +9,7 @@
      <!-- Sobre -->
      <article class="bg-white col-span-4 rounded-md p-2 shadow-md col-start-3 row-start-1 row-span-2 min-h-14 h-[9.8rem] overflow-auto align-middle">
        <h3 class="flex justify-center font-bold uppercase text-primary-500 font-inter pb-1.3">Sobre</h3>
-       <p class="pl-1"></p>
-       <!-- <p class="pl-1"> </p>
-       <p class="pl-1"> </p> -->
+       <div class="p-1" [innerHTML]="markedTest | markdown"></div>
      </article>
 
      <!-- Contato -->
