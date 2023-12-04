@@ -1,71 +1,104 @@
-    <div *ngIf="showNotFoundImg" class="bg-white">
-      <img src="./../../../assets/404.jpg" alt="404 not found" class="object-contain w-full h-screen" >
-    </div>
-    <div *ngIf="userDetails && !showNotFoundImg" class="wrapper mt-[6rem] max-w-6xl max-h-full pb-10 mx-auto grid grid-cols-8 grid-rows-4 gap-4 items-start ">
+<div *ngIf="showNotFoundImg" class="bg-white">
+  <img
+    src="./../../../assets/404.jpg"
+    alt="404 not found"
+    class="object-contain w-full h-screen"
+  />
+</div>
+<div
+  *ngIf="userDetails && !showNotFoundImg"
+  class="wrapper mt-[6rem]  lg:max-w-[100rem] max-w-6xl max-h-full pb-10 mx-auto grid grid-cols-8 grid-rows-4 gap-4 items-start"
+>
+  <!-- Perfil Sidebar na primeira linha -->
+  <app-perfil-sidebar
+    [dadosPerfilRecebido]="userDetails"
+    class="col-span-2 row-span-3 mb-[2rem]"
+  ></app-perfil-sidebar>
 
-     <!-- Perfil Sidebar na primeira linha -->
-     <app-perfil-sidebar [dadosPerfilRecebido]="userDetails" class="col-span-2 row-span-3 mb-[2rem] "></app-perfil-sidebar>
+  <!-- Sobre -->
+  <article
+    class="bg-white col-span-4 rounded-md p-2 shadow-md col-start-3 row-start-1 row-span-2 min-h-14 h-[9.8rem] overflow-auto align-middle"
+  >
+    <h3
+      class="flex justify-center font-bold uppercase text-primary-500 font-inter pb-1.3"
+    >
+      Sobre
+    </h3>
+    <div class="p-1" [innerHTML]="this.sobre | markdown"></div>
+  </article>
 
-     <!-- Sobre -->
-     <article class="bg-white col-span-4 rounded-md p-2 shadow-md col-start-3 row-start-1 row-span-2 min-h-14 h-[9.8rem] overflow-auto align-middle">
-       <h3 class="flex justify-center font-bold uppercase text-primary-500 font-inter pb-1.3">Sobre</h3>
-       <div class="p-1" [innerHTML]="markedTest | markdown"></div>
-     </article>
+  <!-- Contato -->
+  <aside
+    class="bg-white col-span-4 rounded-md p-2 shadow-md col-start-7 row-start-1 row-span-3 h-[16.4rem] overflow-auto align-middle"
+  >
+    <h3
+      class="flex justify-center font-bold uppercase text-primary-500 font-inter pb-1.3"
+    >
+      Contato
+    </h3>
+    <div class="p-1" [innerHTML]="this.contato | markdown"></div>
+  </aside>
 
-     <!-- Contato -->
-     <aside class="bg-white col-span-4 rounded-md p-2 shadow-md col-start-7 row-start-1 row-span-3 h-[16.4rem] overflow-auto align-middle">
-      <h3 class="flex justify-center font-bold uppercase text-primary-500 font-inter pb-1.3">Contato</h3>
-       <p class="pl-1"> </p>
-       <p class="pl-1"> </p>
-       <p class="pl-1"> </p>
-       <p class="pl-1"> </p>
-       <p class="pl-1"> </p>
-     </aside>
+  <!-- Experiências -->
+  <article
+    class="bg-white col-span-4 rounded-md col-start-3 row-start-3 p-2 shadow-md row-span-4 overflow-auto h-[9.8rem] align-middle"
+  >
+    <h3
+      class="flex justify-center font-bold uppercase text-primary-500 font-inter pb-1.3"
+    >
+      Experiências
+    </h3>
+    <div class="p-1" [innerHTML]="this.experiencia | markdown"></div>
+  </article>
 
-     <!-- Experiências -->
-     <article class="bg-white col-span-4 rounded-md col-start-3 row-start-3 p-2 shadow-md row-span-4 overflow-auto h-[9.8rem] align-middle">
-       <h3 class= "flex justify-center font-bold uppercase text-primary-500 font-inter pb-1.3">Experiências</h3>
-       <p class="pl-1"> </p>
-       <p class="pl-1"> </p>
-       <p class="pl-1"> </p>
-     </article>
+  <!-- Formações -->
+  <article
+    class="bg-white col-span-4 rounded-md col-start-3 row-start-2 p-2 shadow-md overflow-auto h-[9.8rem] align-middle"
+  >
+    <h3
+      class="flex justify-center font-bold uppercase text-primary-500 font-inter pb-1.3"
+    >
+      Formações
+    </h3>
+    <div class="p-1" [innerHTML]="this.formacao | markdown"></div>
+  </article>
 
-     <!-- Formações -->
-     <article class="bg-white col-span-4 rounded-md col-start-3 row-start-2 p-2 shadow-md overflow-auto h-[9.8rem] align-middle">
-       <h3 class= "flex justify-center font-bold uppercase text-primary-500 font-inter pb-1.3">Formações</h3>
-       <p class="pl-1"> </p>
-       <p class="pl-1"> </p>
-       <p class="pl-1"> </p>
-     </article>
+  <!-- Avatares -->
+  <app-avatar-component class="col-start-7 row-start-3"></app-avatar-component>
 
-     <!-- Avatares -->
-     <aside class="col-start-7 row-start-3">
-      <app-avatar-component></app-avatar-component>
-     </aside>
+  <!-- Habilidades -->
+  <article
+    class="col-span-3 col-start-1 row-start-4 p-2 overflow-auto align-middle bg-white rounded-md shadow-md"
+  >
+    <h3
+      class="flex justify-center font-bold uppercase text-primary-500 font-inter pb-1.3 h-[6.9rem]"
+    >
+      Habilidades
+    </h3>
+    <div class="p-1" [innerHTML]="this.habilidades | markdown"></div>
+  </article>
 
-     <!-- Habilidades -->
-     <article class="col-span-3 col-start-1 row-start-4 p-2 overflow-auto align-middle bg-white rounded-md shadow-md">
-       <h3 class= "flex justify-center font-bold uppercase text-primary-500 font-inter pb-1.3 h-[6.9rem]">Habilidades</h3>
-       <p class="pl-1"> </p>
-       <p class="pl-1"> </p>
-       <p class="pl-1"> </p>
-     </article>
+  <!-- Conhecimentos -->
+  <article
+    class="justify-center col-span-3 col-start-4 row-start-4 p-2 overflow-auto align-middle bg-white rounded-md shadow-md"
+  >
+    <h3
+      class="flex justify-center font-bold uppercase text-primary-500 font-inter pb-1.3 h-[6.9rem]"
+    >
+      Conhecimentos
+    </h3>
+    <div class="p-1" [innerHTML]="this.conhecimentos | markdown"></div>
+  </article>
 
-     <!-- Conhecimentos -->
-     <article class="justify-center col-span-3 col-start-4 row-start-4 p-2 overflow-auto align-middle bg-white rounded-md shadow-md">
-       <h3 class= "flex justify-center font-bold uppercase text-primary-500 font-inter pb-1.3 h-[6.9rem]">Conhecimentos</h3>
-       <p class="pl-1"> </p>
-       <p class="pl-1"> </p>
-       <p class="pl-1"> </p>
-     </article>
-
-     <!-- Idiomas -->
-     <article class="justify-center col-span-4 col-start-7 row-start-4 p-2 overflow-auto align-middle bg-white rounded-md shadow">
-       <h3 class= "flex justify-center font-bold uppercase text-primary-500 font-inter pb-1.3 h-[6.9rem]">Idiomas</h3>
-       <p class="pl-1"> </p>
-       <p class="pl-1"> </p>
-       <p class="pl-1"> </p>
-     </article>
-
-     </div>
-
+  <!-- Idiomas -->
+  <article
+    class="justify-center col-span-4 col-start-7 row-start-4 p-2 overflow-auto align-middle bg-white rounded-md shadow"
+  >
+    <h3
+      class="flex justify-center font-bold uppercase text-primary-500 font-inter pb-1.3 h-[6.9rem]"
+    >
+      Idiomas
+    </h3>
+    <div class ="p-1" [innerHTML]="this.idiomas | markdown"></div>
+  </article>
+</div>
