@@ -16,7 +16,7 @@
             <div class="w-full px-4 lg:w-6/12">
               <div class="w-full mb-3 ">
                 <label class="block mb-2 text-xs font-bold uppercase text-blueGray-600" >Nome Social:</label>
-                <input name="socialName" type="text" class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border-0 rounded shadow placeholder-blueGray-300 text-blueGray-600 focus:outline-none focus:ring" placeholder="Nome social" [(ngModel)]="nomeSocial" [ngModelOptions]="{standalone: true}">
+                <input name="socialName"  type="text" class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border-0 rounded shadow placeholder-blueGray-300 text-blueGray-600 focus:outline-none focus:ring"  placeholder="Nome social"  [(ngModel)]="nomeSocial"  [ngModelOptions]="{standalone: true}" *ngIf="dadosPerfil">
               </div>
             </div>
             <div class="w-full px-4 lg:w-6/12">
