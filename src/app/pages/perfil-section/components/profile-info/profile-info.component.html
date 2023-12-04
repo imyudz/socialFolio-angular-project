@@ -4,7 +4,10 @@
           <h6 class="text-xl font-bold text-blueGray-700">
             Minha Conta
           </h6>
-          <button (onclick)="salvarDados()" type="button" value="salvar" class="pl-2 pr-2 ml-5 text-white bg-orange-300 rounded shadow-sm shadow-gray-500 hover:bg-orange-400">Atualizar</button>
+          <div class="flex">
+            <button (click)="this.logoutSystem()"  value="salvar" class="pl-2 pr-2 ml-5 text-white bg-orange-300 rounded shadow-sm shadow-gray-500 hover:bg-orange-400">Logout</button>
+            <button (click)="this.salvarDados()"  value="salvar" class="pl-2 pr-2 ml-5 text-white bg-orange-300 rounded shadow-sm shadow-gray-500 hover:bg-orange-400">Atualizar</button>
+          </div>
         </div>
       </div>
       <div class="flex-auto px-4 py-10 pt-0 lg:px-10">

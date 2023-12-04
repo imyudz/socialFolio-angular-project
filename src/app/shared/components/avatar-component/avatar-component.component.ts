@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { UserDetailsResponse } from 'src/app/services/models/UserDetailsResponse.model';
 
@@ -9,7 +10,7 @@ import { UserDetailsResponse } from 'src/app/services/models/UserDetailsResponse
 })
 export class AvatarComponentComponent implements OnInit {
 
-  constructor(public servico: ApiService){}
+  constructor(public servico: ApiService, private router: Router){}
   imgProfile: any;
   dadosPerfil: UserDetailsResponse[] | null = null;
 
@@ -19,13 +20,17 @@ export class AvatarComponentComponent implements OnInit {
     this.getAllUserBasicInfos();
   }
 
-
+  navigateVisit(id: any){
+    console.log("navigate:"+id)
+    this.router.navigate(['/curriculo/'+id])
+  }
   getAllUserBasicInfos() {
     this.servico.getAllUsers().subscribe((resposta : any)=>
     {
       console.log('Resposta da API: ' + resposta);
+      console.log(JSON.stringify(resposta))
       this.usuarios = resposta;
- 
+
     })
   }
 
