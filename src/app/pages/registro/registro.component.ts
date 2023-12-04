@@ -17,7 +17,7 @@ export class RegistroComponent {
 
   selectedProfileFile: File | null = null;
   selectedCoverFile: File | null = null;
-  REQUIRED_LENGTH_DESC: number = 70;
+  REQUIRED_LENGTH_DESC: number = 150;
 
   constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) {
     this.registerForm = this.formBuilder.group({
