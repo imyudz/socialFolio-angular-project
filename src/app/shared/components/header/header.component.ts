@@ -1,6 +1,7 @@
+import { AuthService } from 'src/app/services/auth.service';
 import { Component } from '@angular/core';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faFileLines, faGlobe, faUser } from '@fortawesome/free-solid-svg-icons';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -12,4 +13,13 @@ export class HeaderComponent {
   faFileLines = faFileLines;
   faGlobe = faGlobe;
   faUser = faUser;
+
+  constructor(private authService: AuthService, private router: Router){}
+
+  redirecionarParaCurriculoUsuarioAtual(): void {
+    const currentLoggedUserId = this.authService.userID; // Obtém o ID do usuário atual
+    console.log("Usuário atual logado: " + currentLoggedUserId);
+    this.router.navigate([`/curriculo/${currentLoggedUserId}`]);
+  }
+
 }
