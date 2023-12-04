@@ -17,6 +17,12 @@ export class CurriculoSectionComponent {
   userDetails: UserDetailsResponse | null = null;
   markedTest: string = "";
   sobre: string = "";
+  contato: string = "";
+  experiencia: string = "";
+  formacao: string = "";
+  habilidades: string = "";
+  conhecimentos: string = "";
+  idiomas: string = "";
 
   constructor(private authService: AuthService, private apiService: ApiService, private router: Router, private activatedRoute: ActivatedRoute){
     this.userId = this.activatedRoute.snapshot.params['userId'];
@@ -63,11 +69,20 @@ export class CurriculoSectionComponent {
 
       this.apiService.getCurriculumInfo(this.userId).subscribe({
         next: (response: CurriculoInfoResponse) => {
-
+          console.log(response);
+          const { about, formation, experience, contact, skill, knowledge, language } = response;
+          this.sobre = about ? about : "";
+          this.formacao = formation ? formation : "";
+          this.experiencia = experience ? experience : "";
+          this.contato = contact ? contact : "";
+          this.habilidades = skill ? skill : "";
+          this.conhecimentos = knowledge ? knowledge : "";
+          this.idiomas = language ? language : "";
         },
         error: (error) => {
           if (error.status === 404) {
             this.showNotFoundImg = true;
+
           }
         }
       });
