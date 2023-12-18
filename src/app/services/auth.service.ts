@@ -10,8 +10,8 @@ import { LoginRequest } from './models/LoginRequest.model';
 })
 export class AuthService {
 
-  private authURL = "http://localhost:8080/api/v1/auth"
-  private apiURL = "http://localhost:8080/api/v1/demo"
+  private authURL = "https://deft-month-production.up.railway.app/api/v1/auth"
+  private apiURL = "https://deft-month-production.up.railway.app/api/v1/demo"
   private loggedIn = new BehaviorSubject<boolean>(false);
   private tokenKey = "token";
   private userIdKey = "userId";
@@ -48,11 +48,10 @@ export class AuthService {
   }
 
   logout() {
-    console.log('logout pt2')
     localStorage.removeItem(this.tokenKey);
     localStorage.removeItem(this.userIdKey);
     this.setLoggedIn(false);
-    this.router.navigate(['/login']);
+    this.router.navigate(['/']);
   }
 
   isTokenActive(): Observable<Boolean> {

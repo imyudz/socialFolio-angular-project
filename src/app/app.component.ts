@@ -15,7 +15,9 @@ export class AppComponent {
       if (event instanceof NavigationEnd) {
         const currentRoute = this.router.routerState.snapshot.root.firstChild?.routeConfig?.data?.["layout"];
         this.layout = currentRoute || 'default-layout';
+        console.log('Current Layout:', this.layout);
       }
+      console.log(event);
     })
   }
 }

@@ -22,7 +22,7 @@ export class AvatarComponentComponent implements OnInit {
 
   navigateVisit(id: any){
     console.log("navigate:"+id)
-    this.router.navigate(['/curriculo/'+id])
+    this.router.navigate(['/curriculo/'+id]);
   }
   getAllUserBasicInfos() {
     this.servico.getAllUsers().subscribe((resposta : any)=>

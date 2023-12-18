@@ -25,69 +25,46 @@ export class CurriculoSectionComponent {
   idiomas: string = "";
 
   constructor(private authService: AuthService, private apiService: ApiService, private router: Router, private activatedRoute: ActivatedRoute){
-    this.userId = this.activatedRoute.snapshot.params['userId'];
-    this.markedTest = `
-    # Exemplo de Texto em Markdown
-
-    Este é um exemplo de texto em **Markdown** que pode ser usado para demonstração. Aqui estão alguns elementos comuns:
-
-    ## Títulos
-
-    Os títulos são criados usando hashtags (#). Quanto mais hashtags, menor o nível do título.
-
-    ## Estilos de Texto
-
-    Você pode usar **negrito**, *itálico* ou até mesmo ***ambos***.
-
-    ## Listas
-
-    ### Lista Não Ordenada
-    - Item 1
-    - Item 2
-    - Item 3
-
-    ### Lista Ordenada
-    1. Primeiro item
-    2. Segundo item
-    3. Terceiro item
-    `;
   }
 
   ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
-    if (this.userId){
-      this.apiService.getUserDetails(this.userId).subscribe({
-        next: (response: UserDetailsResponse) => {
-          console.log("Recebi detalhes de usuário: ", response);
-          this.userDetails = response;
-        },
-        error: (error) => {
-          console.error("Erro ao obter as informações de usuário", error);
-        }
-      });
-
-      this.apiService.getCurriculumInfo(this.userId).subscribe({
-        next: (response: CurriculoInfoResponse) => {
-          console.log(response);
-          const { about, formation, experience, contact, skill, knowledge, language } = response;
-          this.sobre = about ? about : "";
-          this.formacao = formation ? formation : "";
-          this.experiencia = experience ? experience : "";
-          this.contato = contact ? contact : "";
-          this.habilidades = skill ? skill : "";
-          this.conhecimentos = knowledge ? knowledge : "";
-          this.idiomas = language ? language : "";
-        },
-        error: (error) => {
-          if (error.status === 404) {
-            this.showNotFoundImg = true;
-
-          }
-        }
-      });
-
-    }
+    this.activatedRoute.params.subscribe(params => {
+      const userId = params['userId'];
+      if (userId) {
+        // Use o ID atualizado para buscar e atualizar os dados do currículo
+        this.getUserAndCurriculumInfo(userId);
+      }
+    });
   }
 
+  getUserAndCurriculumInfo(userId: number): void {
+    this.apiService.getUserDetails(userId).subscribe({
+      next: (response: UserDetailsResponse) => {
+        console.log("Recebi detalhes de usuário: ", response);
+        this.userDetails = response;
+      },
+      error: (error) => {
+        console.error("Erro ao obter as informações de usuário", error);
+      }
+    });
+
+    this.apiService.getCurriculumInfo(userId).subscribe({
+      next: (response: CurriculoInfoResponse) => {
+        console.log(response);
+        const { about, formation, experience, contact, skill, knowledge, language } = response;
+        this.sobre = about ? about : "";
+        this.formacao = formation ? formation : "";
+        this.experiencia = experience ? experience : "";
+        this.contato = contact ? contact : "";
+        this.habilidades = skill ? skill : "";
+        this.conhecimentos = knowledge ? knowledge : "";
+        this.idiomas = language ? language : "";
+      },
+      error: (error) => {
+        if (error.status === 404) {
+          this.showNotFoundImg = true;
+        }
+      }
+    });
+  }
 }

@@ -11,7 +11,7 @@ import { CurriculoInfoResponse } from './models/CurriculoInfoResponse.model';
 export class ApiService {
   constructor(private http: HttpClient, private router: Router) { }
 
-  API_SERVICE_URL: string = 'http://localhost:8080/api/v1/demo';
+  API_SERVICE_URL: string = 'https://deft-month-production.up.railway.app/api/v1/demo';
   public getUserDetails(userId: number): Observable<UserDetailsResponse> {
     return this.http.get<UserDetailsResponse>(this.API_SERVICE_URL + `/userinfo/${userId}`);
   }

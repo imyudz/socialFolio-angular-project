@@ -34,8 +34,12 @@
             <span class="font-medium leading-none uppercase text-smaller font-inter text-primary-500">{{this.dadosPerfil.recent_Education}}</span>
           </div>
           <div *ngIf="this.dadosPerfil.workplace !== null && this.dadosPerfil.workplace !== ''" class="flex flex-row w-full justify-between items-center">
-            <strong class="text-smaller uppercase font-semibold text-neutral-400 font-inter">EMPRESA</strong>
+            <strong class="text-smaller uppercase font-semibold text-neutral-400 font-inter">LOCAL TRABALHO</strong>
             <span class="text-smaller font-medium font-inter text-primary-500 leading-none uppercase">{{this.dadosPerfil.workplace.toUpperCase()}}</span>
+          </div>
+          <div *ngIf="this.dadosPerfil.current_Company !== null && this.dadosPerfil.current_Company !== ''" class="flex flex-row w-full justify-between items-center">
+            <strong class="text-smaller uppercase font-semibold text-neutral-400 font-inter">EMPRESA</strong>
+            <span class="text-smaller font-medium font-inter text-primary-500 leading-none uppercase">{{this.dadosPerfil.current_Company.toUpperCase()}}</span>
           </div>
         </div>
       </div>

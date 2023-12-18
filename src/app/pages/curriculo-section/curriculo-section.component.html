@@ -7,33 +7,39 @@
 </div>
 <div
   *ngIf="userDetails && !showNotFoundImg"
-  class="wrapper mt-[6rem]  lg:max-w-[100rem] max-w-6xl max-h-full pb-10 mx-auto grid grid-cols-8 grid-rows-4 gap-4 items-start"
+  class="wrapper mt-[6rem] max-w-7xl max-h-full pb-10 mx-auto grid grid-cols-8 gap-4 items-start"
 >
-  <!-- Perfil Sidebar na primeira linha -->
-  <app-perfil-sidebar
-    [dadosPerfilRecebido]="userDetails"
-    class="col-span-2 row-span-2 col-start-2 row-start-1"
-  ></app-perfil-sidebar>
+
+  <div class="col-span-2 flex flex-col gap-5">
+    <app-perfil-sidebar
+      [dadosPerfilRecebido]="userDetails"
+      class="col-span-3 col-start-1"
+    ></app-perfil-sidebar>
+    <app-avatar-component></app-avatar-component>
+  </div>
+
+
+
 
   <!-- Sobre -->
   <article
-    class="bg-white col-span-4 rounded-md p-2 shadow-md col-start-4 row-start-1 row-span-2 max-h-[800px] overflow-auto align-middle"
+    class="bg-white rounded-md p-2 shadow-md col-span-6  overflow-auto align-middle"
   >
     <h3
       class="flex justify-center font-bold uppercase text-primary-500 font-inter pb-1.3"
     >
-      Main
+      {{userDetails.name}}
     </h3>
-    <div class="p-1" [innerHTML]="this.sobre | markdown"></div>
-    <div class="p-1" [innerHTML]="this.contato | markdown"></div>
-    <div class="p-1" [innerHTML]="this.experiencia | markdown"></div>
-    <div class="p-1" [innerHTML]="this.formacao | markdown"></div>
-    <div class="p-1" [innerHTML]="this.habilidades | markdown"></div>
-    <div class ="p-1" [innerHTML]="this.idiomas | markdown"></div>
+    <markdown class="prose p-1" [data]="this.sobre"></markdown>
+    <markdown class="prose lg:prose-xl p-1" [data]="this.contato"></markdown>
+    <markdown class="prose p-3" [data]="this.experiencia"></markdown>
+    <markdown class="prose p-3" [data]="this.formacao "></markdown>
+    <markdown class="prose p-3" [data]="this.habilidades"></markdown>
+    <markdown class="prose p-3" [data]="this.idiomas"></markdown>
 
   </article>
 
-  <app-avatar-component class="col-start-2 row-start-2 h-0"></app-avatar-component>
+
 
   <!-- Contato
   <aside
