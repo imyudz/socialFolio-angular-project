@@ -8,9 +8,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegistroComponent } from './pages/registro/registro.component';
 
 const routes: Routes = [
-  //{ path: "", redirectTo: "/feed", pathMatch: 'full'},
   { path: "feed", component: PostSectionComponent, canActivate: [authGuardFn], data: {layout: "default-layout"} },
-  { path: "feed", component: PostSectionComponent },
   { path: "curriculo/:userId", component: CurriculoSectionComponent, canActivate: [authGuardFn], data: {layout: "default-layout"} },
   { path: "profile", component: PerfilSectionComponent, canActivate: [authGuardFn], data: {layout: "default-layout"} },
   { path: "login", component: LoginComponent, data: {layout: "login-layout"}},

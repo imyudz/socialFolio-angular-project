@@ -40,7 +40,7 @@ export class ProfileInfoComponent implements OnInit {
     this.trampoSelecionado = 'Selecione'
     this.getProfileData();
   }
-  
+
 
   onChange(){
     this.trampoSelecionado = this.niveis.filter((x) => x == this.trampoSelecionado)[0];
@@ -48,7 +48,6 @@ export class ProfileInfoComponent implements OnInit {
   }
 
   logoutSystem(){
-    console.log("logout pt-1")
     this.auth.logout();
   }
   salvarDados() {
@@ -63,7 +62,6 @@ export class ProfileInfoComponent implements OnInit {
     if(this.auth.userID != null){
       this.servico.getUserDetails(this.auth.userID).subscribe((resposta: any) => {
         this.dadosPerfil = resposta;
-        console.log(this.dadosPerfil);
         this.obtemData()
       });
     }
