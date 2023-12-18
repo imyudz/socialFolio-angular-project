@@ -4,6 +4,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        body: {
+          500: "#F4F2EE",
+        },
         primary: {
           100: "#f3e6d1",
           200: "#e8cca3",
@@ -34,9 +37,13 @@ module.exports = {
       },
       fontSize: {
         smaller: "0.75rem",
+        tiny: "0.7rem",
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require("@tailwindcss/forms"),
+    require("@tailwindcss/typography"),
+  ],
 };
 

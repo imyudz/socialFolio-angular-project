@@ -1,0 +1,136 @@
+<article style="box-shadow: 03px 3px 5px 2px rgba(0, 0, 0, 0.2); " class="box-border p-5 bg-gray-300 rounded-lg colspan-3">
+    <div class="px-6 py-6 mb-0 bg-white rounded">
+        <div class="flex justify-between text-center">
+          <h6 class="text-xl font-bold text-blueGray-700">
+            Minha Conta
+          </h6>
+          <div class="flex">
+            <button (click)="this.logoutSystem()"  value="salvar" class="pl-2 pr-2 ml-5 text-white bg-orange-300 rounded shadow-sm shadow-gray-500 hover:bg-orange-400">Logout</button>
+            <button (click)="this.salvarDados()"  value="salvar" class="pl-2 pr-2 ml-5 text-white bg-orange-300 rounded shadow-sm shadow-gray-500 hover:bg-orange-400">Atualizar</button>
+          </div>
+        </div>
+      </div>
+      <div class="flex-auto px-4 py-10 pt-0 lg:px-10">
+        <form>
+          <h6 class="mt-3 mb-6 text-sm font-bold uppercase text-blueGray-400">
+            Informações do usuario
+          </h6>
+          <div class="flex flex-wrap">
+            <div class="w-full px-4 lg:w-6/12">
+              <div class="w-full mb-3 ">
+                <label class="block mb-2 text-xs font-bold uppercase text-blueGray-600" >Nome Social:</label>
+                <input name="socialName"  type="text" class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border-0 rounded shadow placeholder-blueGray-300 text-blueGray-600 focus:outline-none focus:ring"  placeholder="Nome social"  [(ngModel)]="nomeSocial"  [ngModelOptions]="{standalone: true}" *ngIf="dadosPerfil">
+              </div>
+            </div>
+            <div class="w-full px-4 lg:w-6/12">
+              <div class="w-full mb-3 ">
+                <label class="block mb-2 text-xs font-bold uppercase text-blueGray-600" htmlfor="grid-password">Endereço de email:</label>
+                <input type="email" class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border-0 rounded shadow placeholder-blueGray-300 text-blueGray-600 focus:outline-none focus:ring"  placeholder="your.email@domain.com" [(ngModel)]="emailUser" [ngModelOptions]="{standalone: true}">
+              </div>
+            </div>
+            <div class="w-full px-4 lg:w-6/12">
+              <div class="w-full mb-3 ">
+                <label class="block mb-2 text-xs font-bold uppercase text-blueGray-600" htmlfor="grid-password">Primeiro Nome:</label>
+                <input name="firstName" id="firstName" type="text" class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border-0 rounded shadow placeholder-blueGray-300 text-blueGray-600 focus:outline-none focus:ring" placeholder="Nome" [(ngModel)]="nameUser" [ngModelOptions]="{standalone: true}" >
+              </div>
+            </div>
+            <div class="w-full px-4 lg:w-6/12">
+              <div class="w-full mb-3 ">
+                <label class="block mb-2 text-xs font-bold uppercase text-blueGray-600" htmlfor="grid-password">Sobrenome:</label>
+                <input name="surname" type="text" class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border-0 rounded shadow placeholder-blueGray-300 text-blueGray-600 focus:outline-none focus:ring "placeholder="Sobrenome" [(ngModel)]="sobrenomeUser" [ngModelOptions]="{standalone: true}">
+              </div>
+            </div>
+            <div class="w-full px-4 lg:w-6/12">
+              <div class="w-full mb-3 ">
+                <label class="block mb-2 text-xs font-bold uppercase text-blueGray-600" htmlfor="grid-password">Profissão:</label>
+                <input name="profissao" type="text" class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border-0 rounded shadow placeholder-blueGray-300 text-blueGray-600 focus:outline-none focus:ring "placeholder="Digite sua profissão" [(ngModel)]="profissao" [ngModelOptions]="{standalone: true}">
+              </div>
+            </div>
+            <div class="w-full px-4 lg:w-6/12">
+              <div class="w-full mb-3 ">
+                <label class="block mb-2 text-xs font-bold uppercase text-blueGray-600" htmlfor="grid-password">Empregado:</label>
+                <select name="trabaia" type="text" class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border-0 rounded shadow placeholder-blueGray-300 text-blueGray-600 focus:outline-none focus:ring" [(ngModel)]="trampa" [ngModelOptions]="{standalone: true}">
+                  <option value="">Selecione</option> 
+                  <option value="1">Sim</option>
+                  <option value="0">Não</option>
+                </select>
+              </div>
+            </div>
+            <!-- <div class="w-full px-4 lg:w-6/12">
+              <div class="w-full mb-3 ">
+                <label class="block mb-2 text-xs font-bold uppercase text-blueGray-600" htmlfor="grid-password">Experiencia:</label>
+                <select  class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border-0 rounded shadow placeholder-blueGray-300 text-blueGray-600 focus:outline-none focus:ring"  name="experiencia" type="text" placeholder="Nome" [(ngModel)]="trampoSelecionado" (change)="onChange()">
+                  <option *ngFor="let t of niveis" [value]="t">
+                      {{ t }}
+                  </option>
+              </select>
+              </div>
+            </div> -->
+
+            <div class="w-full px-4 lg:w-6/12">
+                <div class="w-full mb-3 ">
+                  <label class="block mb-2 text-xs font-bold uppercase text-blueGray-600" htmlfor="grid-password">Telefone:</label>
+                  <input name="phone" type="text" class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border-0 rounded shadow placeholder-blueGray-300 text-blueGray-600 focus:outline-none focus:ring "placeholder="(xx) xxxxx-xxxx" [(ngModel)]="phoneNumber" [ngModelOptions]="{standalone: true}" >
+                </div>
+              </div>
+              <div class="w-full px-4 lg:w-6/12">
+                <div class="w-full mb-3 ">
+                  <label class="block mb-2 text-xs font-bold uppercase text-blueGray-600" htmlfor="grid-password">data de nascimento:</label>
+                  <input name="dtBirth" type="date" class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border-0 rounded shadow placeholder-blueGray-300 text-blueGray-600 focus:outline-none focus:ring " [(ngModel)]="dtNascUser" [ngModelOptions]="{standalone: true}">
+                </div>
+              </div>
+          </div>
+  
+          <hr class="mt-6 border-b-1 border-blueGray-300">
+  
+          <h6 class="mt-3 mb-6 text-sm font-bold uppercase text-blueGray-400">
+            Informações de contato
+          </h6>
+          <div class="flex flex-wrap">
+            <div class="w-full px-4 lg:w-6/12">
+              <div class="w-full mb-3 ">
+                <label class="block mb-2 text-xs font-bold uppercase text-blueGray-600" htmlfor="grid-password">Estado</label>
+                <input name="locate" type="text" class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border-0 rounded shadow placeholder-blueGray-300 text-blueGray-600 focus:outline-none focus:ring" placeholder="Digite o estado de seu endereço" [(ngModel)]="estadoUser" [ngModelOptions]="{standalone: true}">
+              </div>
+            </div>
+            <div class="w-full px-4 lg:w-6/12">
+              <div class="w-full mb-3 ">
+                <label class="block mb-2 text-xs font-bold uppercase text-blueGray-600" htmlfor="grid-password">Cidade</label>
+                <input name="city" type="email" class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border-0 rounded shadow placeholder-blueGray-300 text-blueGray-600 focus:outline-none focus:ring" placeholder="Digite sua cidade" [(ngModel)]="cidadeUser" [ngModelOptions]="{standalone: true}">
+              </div>
+            </div>
+            
+            <div class="w-full px-4 lg:w-6/12">
+              <div class="w-full mb-3 ">
+                <label class="block mb-2 text-xs font-bold uppercase text-blueGray-600" htmlfor="grid-password">Empresa:</label>
+                <input name="enterprise" type="text" class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border-0 rounded shadow placeholder-blueGray-300 text-blueGray-600 focus:outline-none focus:ring" placeholder="Digite o nome da sua empresa" [(ngModel)]="enterprise" [ngModelOptions]="{standalone: true}">
+              </div>
+            </div>
+            <div class="w-full px-4 lg:w-6/12">
+              <div class="w-full mb-3 ">
+                <label class="block mb-2 text-xs font-bold uppercase text-blueGray-600" htmlfor="grid-password">Local de trabalho:</label>
+                <input name="enterprise" type="text" class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border-0 rounded shadow placeholder-blueGray-300 text-blueGray-600 focus:outline-none focus:ring" placeholder="Digite a localidade da empresa" [(ngModel)]="workplace" [ngModelOptions]="{standalone: true}">
+              </div>
+            </div>
+          </div>
+          <hr class="mt-6 border-b-1 border-blueGray-300">
+  
+          <h6 class="mt-3 mb-6 text-sm font-bold uppercase text-blueGray-400">
+            Sobre mim:
+          </h6>
+          <div class="flex flex-wrap">
+            <div class="w-full px-4 lg:w-12/12">
+              <div class="w-full mb-3 ">
+                <label class="block mb-2 text-xs font-bold uppercase text-blueGray-600" htmlfor="grid-password">Educação:</label>
+                <input name="desc" type="text" class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border-0 rounded shadow placeholder-blueGray-300 text-blueGray-600 focus:outline-none focus:ring" rows="4" placeholder="Curso ou faculdade" [(ngModel)]="educacao" [ngModelOptions]="{standalone: true}"/> 
+              </div>
+              <div class="w-full mb-3 ">
+                <label class="block mb-2 text-xs font-bold uppercase text-blueGray-600" htmlfor="grid-password">Sobre mim:</label>
+                <textarea name="desc" type="text" class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border-0 rounded shadow placeholder-blueGray-300 text-blueGray-600 focus:outline-none focus:ring" rows="4" placeholder="Fale um pouco sobre você" [(ngModel)]="descricao" [ngModelOptions]="{standalone: true}"> </textarea>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+</article>
+
